@@ -1,0 +1,10 @@
+{
+  "zones": [
+    {"name": "Velachery", "h3_id": "8c2a8a1a", "risk": 1.5},
+    {"name": "Madipakkam", "h3_id": "8c2a8a1b", "risk": 1.4},
+    {"name": "Adyar", "h3_id": "8c2a8a1c", "risk": 1.2},
+    {"name": "OMR", "h3_id": "8c2a8a1d", "risk": 0.9},
+    {"name": "T.Nagar", "h3_id": "8c2a8a1e", "risk": 1.0},
+    {"name": "Anna Nagar", "h3_id": "8c2a8a1f", "risk": 0.9}
+  ]
+}
