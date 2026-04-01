@@ -1,0 +1,20 @@
+services:
+  # Backend API - FastAPI
+  - type: web
+    name: varsha-api
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+
+  # Frontend Static Files
+  - type: static
+    name: varsha-frontend
+    buildCommand: echo "Static site ready"
+    staticPublishPath: ./frontend
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: no-cache

@@ -1636,21 +1636,17 @@
   <div id="toast"></div>
 
   <script>
-    // API_BASE that works both locally and on GitHub Pages
-        // API_BASE pointing to live backend
+    // API_BASE pointing to live backend on Render
     const API_BASE = 'https://varsha-s1dh.onrender.com';
     let partners = [], selfieDone = false, pendingClaim = null, curPid = null;
-    async function api(m, endpoint, body) { 
-    const options = { 
-        method: m, 
-        headers: { 'Content-Type': 'application/json' } 
-    }; 
-    if (body) options.body = JSON.stringify(body); 
-    const response = await fetch(`https://varsha-s1dh.onrender.com/api/${endpoint}`, options); 
-    const data = await response.json(); 
-    if (!response.ok) throw new Error(data.detail || 'Request failed'); 
-    return data; 
-}
+    async function api(m, endpoint, body) {
+      const options = { method: m, headers: { 'Content-Type': 'application/json' } };
+      if (body) options.body = JSON.stringify(body);
+      const response = await fetch(API_BASE + endpoint, options);
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.detail || 'Request failed');
+      return data;
+    }
     function toast(msg, t = 'info') { const e = document.getElementById('toast'); const c = { success: '#059669', error: '#ef4444', warn: '#f59e0b', info: '#1e3a8a' }; e.textContent = msg; e.style.borderLeft = `4px solid ${c[t] || c.info}`; e.style.display = 'block'; clearTimeout(e._t); e._t = setTimeout(() => e.style.display = 'none', 3200); }
     // SECTIONS
     function goSec(s) {
