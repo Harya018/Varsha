@@ -1,422 +1,1695 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>VARSHA – AI Parametric Insurance for Delivery Partners</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;color:#1a1a1a;background:#fff;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
-img{max-width:100%;display:block}
-/* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid #eee;height:64px;display:flex;align-items:center;padding:0 3rem}
-.nav-logo{font-weight:900;font-size:22px;color:#1e3a8a;display:flex;align-items:center;gap:8px}
-.nav-logo svg{width:28px;height:28px}
-.nav-tabs{display:flex;gap:0;margin-left:auto}
-.nav-tab{background:none;border:none;font-family:inherit;font-size:14px;font-weight:500;color:#64748b;cursor:pointer;padding:0 18px;height:64px;border-bottom:2.5px solid transparent;transition:.15s}
-.nav-tab:hover{color:#1e3a8a}.nav-tab.on{color:#1e3a8a;border-bottom-color:#1e3a8a}
-.nav-signin{margin-left:16px;background:#1e3a8a;color:#fff;border:none;padding:8px 20px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
-.nav-signin:hover{background:#1e40af}
-/* HERO */
-.hero{padding:120px 3rem 60px;display:grid;grid-template-columns:1fr 1fr;gap:3rem;max-width:1200px;margin:0 auto;align-items:center}
-.hero h1{font-size:44px;font-weight:900;line-height:1.15;color:#0f172a;margin-bottom:16px}
-.hero h1 span{color:#1e3a8a}
-.hero-sub{font-size:17px;color:#64748b;margin-bottom:8px;line-height:1.7}
-.hero-tag{display:inline-block;background:#dbeafe;color:#1e3a8a;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:600;margin-bottom:20px}
-.hero-btns{display:flex;gap:12px;margin-top:24px}
-.hb{padding:14px 28px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;border:none;font-family:inherit;transition:.15s}
-.hb-p{background:#1e3a8a;color:#fff}.hb-p:hover{background:#1e40af}
-.hb-s{background:#fff;color:#1e3a8a;border:2px solid #1e3a8a}.hb-s:hover{background:#eff6ff}
-.hero-img{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.12)}
-.hero-img img{width:100%;height:400px;object-fit:cover}
-.hero-stats{grid-column:span 2;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:20px}
-.hs{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:20px 24px;text-align:center}
-.hs-n{font-size:32px;font-weight:800;color:#1e3a8a}.hs-l{font-size:13px;color:#64748b;margin-top:4px}
-/* SECTION */
-.sec{padding:80px 3rem;max-width:1200px;margin:0 auto}
-.sec-alt{background:#f8fafc}
-.sec-full{max-width:100%;padding:80px 0}
-.sec-head{text-align:center;margin-bottom:48px}
-.sec-badge{display:inline-block;background:#dbeafe;color:#1e3a8a;padding:5px 16px;border-radius:20px;font-size:12px;font-weight:600;margin-bottom:12px}
-.sec-head h2{font-size:32px;font-weight:800;color:#0f172a}
-.sec-head p{font-size:15px;color:#64748b;margin-top:8px;max-width:600px;margin-left:auto;margin-right:auto}
-/* FEATURES */
-.feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.feat{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:28px 22px;text-align:center;transition:box-shadow .2s,transform .2s}
-.feat:hover{box-shadow:0 8px 30px rgba(0,0,0,.08);transform:translateY(-4px)}
-.feat-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 16px;background:#eff6ff}
-.feat h3{font-size:15px;font-weight:700;color:#0f172a;margin-bottom:8px}
-.feat p{font-size:13px;color:#64748b;line-height:1.5}
-/* TRIGGERS */
-.trg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.trg{border:1px solid #e2e8f0;border-radius:12px;padding:18px 20px;background:#fff;transition:.15s}
-.trg.hot{border-color:#fca5a5;background:#fff5f5}
-.trg-top{display:flex;align-items:center;gap:8px;margin-bottom:6px}
-.trg-dot{width:8px;height:8px;border-radius:50%;background:#d1d5db}.trg-dot.on{background:#ef4444;box-shadow:0 0 6px rgba(239,68,68,.5)}
-.trg-name{font-size:14px;font-weight:600;color:#0f172a}
-.trg-val{font-size:13px;color:#64748b}
-.trg-badge{display:inline-block;padding:2px 10px;border-radius:20px;font-size:11px;font-weight:600;margin-top:6px}
-.trg-badge.active{background:#fee2e2;color:#991b1b}.trg-badge.ok{background:#dcfce7;color:#166534}
-.sim-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;justify-content:center}
-.sim-btn{background:#ef4444;color:#fff;border:none;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}.sim-btn:hover{background:#dc2626}
-/* PARTNERS */
-.par-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
-.par{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:22px 18px;text-align:center;transition:.2s}
-.par:hover{box-shadow:0 6px 24px rgba(0,0,0,.08);transform:translateY(-3px)}
-.par-av{width:48px;height:48px;border-radius:50%;background:#dbeafe;display:flex;align-items:center;justify-content:center;font-size:20px;margin:0 auto 10px}
-.par h4{font-size:14px;font-weight:700;color:#0f172a;margin-bottom:2px}
-.par-zone{font-size:12px;color:#64748b}.par-plat{font-size:11px;color:#94a3b8;margin-top:2px}
-.par-btn{margin-top:12px;background:#1e3a8a;color:#fff;border:none;padding:7px 18px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit}.par-btn:hover{background:#1e40af}
-/* ACTIVE PARTNER */
-.ap{max-width:1200px;margin:0 auto;padding:0 3rem}
-.ap-bar{background:linear-gradient(135deg,#1e3a8a,#3b82f6);border-radius:14px;padding:20px 28px;color:#fff;display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
-.ap-bar h3{font-size:16px;font-weight:700}.ap-bar p{font-size:13px;opacity:.85;margin-top:2px}
-/* DASHBOARD */
-.dash{max-width:1200px;margin:0 auto;padding:0 3rem 60px}
-.dtabs{display:flex;gap:0;border-bottom:2px solid #e2e8f0;margin-bottom:28px}
-.dtab{background:none;border:none;font-family:inherit;font-size:14px;font-weight:600;color:#94a3b8;cursor:pointer;padding:12px 24px;border-bottom:2.5px solid transparent;margin-bottom:-2px;transition:.15s}
-.dtab:hover{color:#1e3a8a}.dtab.on{color:#1e3a8a;border-bottom-color:#1e3a8a}
-.dpg{display:none}.dpg.on{display:block}
-/* CARDS / FORMS */
-.card{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:24px}
-.card+.card{margin-top:16px}
-.ct{font-size:15px;font-weight:700;color:#0f172a;margin-bottom:14px;display:flex;align-items:center;gap:8px}
-.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px}
-.sc{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:20px}
-.sc:hover{box-shadow:0 4px 16px rgba(0,0,0,.05)}
-.sl{font-size:11px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
-.sv{font-size:28px;font-weight:800;color:#0f172a}.sv.blue{color:#1e3a8a}
-.ss{font-size:12px;color:#94a3b8;margin-top:4px}
-.prog{margin:16px 0}.prog-row{display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px}
-.prog-row span:first-child{font-weight:600;color:#0f172a}.prog-row span:last-child{color:#64748b}
-.prog-track{height:8px;background:#e2e8f0;border-radius:8px;overflow:hidden}
-.prog-fill{height:100%;border-radius:8px;background:linear-gradient(90deg,#1e3a8a,#3b82f6);transition:width .5s}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.fg{margin-bottom:14px}
-label.fl{display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:5px}
-input[type=text],input[type=tel],select{width:100%;padding:12px 14px;border:1.5px solid #e2e8f0;border-radius:8px;font-size:14px;font-family:inherit;color:#1a1a1a;outline:none;transition:.15s;background:#fff;appearance:none;-webkit-appearance:none}
-input:focus,select:focus{border-color:#1e3a8a;box-shadow:0 0 0 3px rgba(30,58,138,.1)}
-.pg-row{display:flex;flex-wrap:wrap;gap:8px}
-.pt{display:flex;align-items:center;gap:6px;padding:8px 14px;border:1.5px solid #e2e8f0;border-radius:8px;cursor:pointer;font-size:13px;font-weight:500;transition:.15s;user-select:none}
-.pt input{display:none}.pt:has(input:checked){border-color:#1e3a8a;background:#eff6ff;color:#1e3a8a}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:12px 20px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;border:none;font-family:inherit;transition:.15s}
-.bp{background:#1e3a8a;color:#fff;width:100%}.bp:hover{background:#1e40af}
-.bp:disabled{opacity:.5;cursor:not-allowed}
-.bo{background:#fff;color:#1e3a8a;border:1.5px solid #1e3a8a;width:100%}.bo:hover{background:#eff6ff}
-.bg-s{background:#059669;color:#fff;width:100%}.bg-s:hover{background:#047857}
-.bsm{padding:8px 14px;font-size:13px;width:auto}
-.otp{letter-spacing:9px;font-size:22px;text-align:center;font-weight:700}
-table{width:100%;border-collapse:collapse;font-size:13px}
-th{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.4px;color:#64748b;padding:10px;border-bottom:2px solid #e2e8f0;text-align:left}
-td{padding:12px 10px;border-bottom:1px solid #f1f5f9;color:#1a1a1a}tr:hover td{background:#f8fafc}
-.tw{overflow-x:auto}
-.fr{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #f1f5f9}
-.fr:last-child{border:none}.fk{font-size:13px;color:#64748b;font-weight:500}.fv{font-size:14px;font-weight:700;color:#0f172a}
-.tier{display:flex;justify-content:space-between;padding:10px 14px;border-radius:8px;font-size:13px}
-.tier.active{background:#eff6ff;color:#1e3a8a;font-weight:700}
-.al{border-radius:8px;padding:14px 16px;font-size:13px;margin-bottom:14px;line-height:1.5}
-.al-s{background:#f0fdf4;border:1px solid #bbf7d0;color:#166534}
-.al-e{background:#fef2f2;border:1px solid #fecaca;color:#991b1b}
-.al-w{background:#fffbeb;border:1px solid #fde68a;color:#92400e}
-.al-i{background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af}
-.badge{display:inline-block;padding:2px 10px;border-radius:20px;font-size:11px;font-weight:600}
-.bs{background:#dcfce7;color:#166534}.bw{background:#fef9c3;color:#854d0e}.be{background:#fee2e2;color:#991b1b}.bi{background:#dbeafe;color:#1e40af}.bgg{background:#f1f5f9;color:#64748b}
-.sfb{border:2px dashed #e2e8f0;border-radius:10px;padding:28px;text-align:center;cursor:pointer;transition:.15s;margin-bottom:14px}
-.sfb:hover,.sfb.ok{border-color:#1e3a8a}.sfb.ok{background:#eff6ff}
-.auth-card{width:100%;max-width:480px;margin:0 auto;background:#fff;border-radius:14px;border:1px solid #e2e8f0;box-shadow:0 4px 20px rgba(0,0,0,.06);padding:2.5rem 2rem}
-.auth-card h2{font-size:22px;font-weight:800;color:#0f172a;margin-bottom:4px}
-.auth-card .sub{font-size:13px;color:#64748b;margin-bottom:22px}
-.sdots{display:flex;align-items:center;gap:0;margin-bottom:22px}
-.sdot{width:24px;height:24px;border-radius:50%;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;background:#e2e8f0;color:#94a3b8;flex-shrink:0}
-.sdot.cur{background:#1e3a8a;color:#fff}.sdot.ok{background:#059669;color:#fff}
-.sline{flex:1;height:2px;background:#e2e8f0}
-.suc{text-align:center;padding:2rem 0}
-.uid{font-size:16px;font-weight:800;letter-spacing:2px;color:#1e3a8a;background:#eff6ff;padding:12px 20px;border-radius:8px;display:inline-block;margin:10px 0}
-.pbar{display:flex;align-items:center;gap:12px;border:1px solid #e2e8f0;border-radius:10px;padding:12px 16px;margin-bottom:16px;background:#fff}
-.pbar label{font-size:13px;font-weight:500;color:#64748b;white-space:nowrap;margin:0}
-.spi{width:15px;height:15px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:sp .65s linear infinite;display:inline-block}
-@keyframes sp{to{transform:rotate(360deg)}}
-#toast{position:fixed;bottom:22px;right:22px;background:#0f172a;color:#fff;padding:12px 20px;border-radius:10px;font-size:13px;font-weight:500;z-index:9999;display:none;box-shadow:0 8px 30px rgba(0,0,0,.2);max-width:320px}
-/* FOOTER */
-.footer{background:#0f172a;color:#fff;padding:60px 3rem 30px}
-.footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
-.footer h4{font-size:14px;font-weight:700;margin-bottom:14px;color:#e2e8f0}
-.footer p{font-size:13px;color:#94a3b8;line-height:1.6}
-.footer a{display:block;font-size:13px;color:#94a3b8;text-decoration:none;margin-bottom:8px;transition:.15s}.footer a:hover{color:#fff}
-.footer-bar{max-width:1200px;margin:0 auto;border-top:1px solid #1e293b;padding-top:20px;text-align:center;font-size:12px;color:#64748b}
-/* RESPONSIVE */
-@media(max-width:1024px){.hero{grid-template-columns:1fr;text-align:center}.hero-img{max-width:500px;margin:0 auto}.hero-btns{justify-content:center}.hero-stats{grid-column:span 1}.feat-grid{grid-template-columns:repeat(2,1fr)}.par-grid{grid-template-columns:repeat(3,1fr)}.trg-grid{grid-template-columns:repeat(3,1fr)}.footer-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:768px){.nav{padding:0 1rem}.nav-tab{padding:0 10px;font-size:13px}.hero{padding:80px 1.5rem 40px}.hero h1{font-size:30px}.sec{padding:50px 1.5rem}.g3{grid-template-columns:1fr}.g2{grid-template-columns:1fr}.feat-grid{grid-template-columns:1fr}.par-grid{grid-template-columns:1fr 1fr}.trg-grid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr}.dash{padding:0 1.5rem 40px}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>VARSHA – AI Parametric Insurance for Delivery Partners</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #1a1a1a;
+      background: #fff;
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased
+    }
+
+    img {
+      max-width: 100%;
+      display: block
+    }
+
+    /* NAV */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, .95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #eee;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      padding: 0 3rem
+    }
+
+    .nav-logo {
+      font-weight: 900;
+      font-size: 22px;
+      color: #1e3a8a;
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .nav-logo svg {
+      width: 28px;
+      height: 28px
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 0;
+      margin-left: auto
+    }
+
+    .nav-tab {
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      color: #64748b;
+      cursor: pointer;
+      padding: 0 18px;
+      height: 64px;
+      border-bottom: 2.5px solid transparent;
+      transition: .15s
+    }
+
+    .nav-tab:hover {
+      color: #1e3a8a
+    }
+
+    .nav-tab.on {
+      color: #1e3a8a;
+      border-bottom-color: #1e3a8a
+    }
+
+    .nav-signin {
+      margin-left: 16px;
+      background: #1e3a8a;
+      color: #fff;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit
+    }
+
+    .nav-signin:hover {
+      background: #1e40af
+    }
+
+    /* HERO */
+    .hero {
+      padding: 120px 3rem 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: center
+    }
+
+    .hero h1 {
+      font-size: 44px;
+      font-weight: 900;
+      line-height: 1.15;
+      color: #0f172a;
+      margin-bottom: 16px
+    }
+
+    .hero h1 span {
+      color: #1e3a8a
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      color: #64748b;
+      margin-bottom: 8px;
+      line-height: 1.7
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1e3a8a;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 20px
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px
+    }
+
+    .hb {
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+      transition: .15s
+    }
+
+    .hb-p {
+      background: #1e3a8a;
+      color: #fff
+    }
+
+    .hb-p:hover {
+      background: #1e40af
+    }
+
+    .hb-s {
+      background: #fff;
+      color: #1e3a8a;
+      border: 2px solid #1e3a8a
+    }
+
+    .hb-s:hover {
+      background: #eff6ff
+    }
+
+    .hero-img {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .12)
+    }
+
+    .hero-img img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover
+    }
+
+    .hero-stats {
+      grid-column: span 2;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 20px
+    }
+
+    .hs {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px 24px;
+      text-align: center
+    }
+
+    .hs-n {
+      font-size: 32px;
+      font-weight: 800;
+      color: #1e3a8a
+    }
+
+    .hs-l {
+      font-size: 13px;
+      color: #64748b;
+      margin-top: 4px
+    }
+
+    /* SECTION */
+    .sec {
+      padding: 80px 3rem;
+      max-width: 1200px;
+      margin: 0 auto
+    }
+
+    .sec-alt {
+      background: #f8fafc
+    }
+
+    .sec-full {
+      max-width: 100%;
+      padding: 80px 0
+    }
+
+    .sec-head {
+      text-align: center;
+      margin-bottom: 48px
+    }
+
+    .sec-badge {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1e3a8a;
+      padding: 5px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 12px
+    }
+
+    .sec-head h2 {
+      font-size: 32px;
+      font-weight: 800;
+      color: #0f172a
+    }
+
+    .sec-head p {
+      font-size: 15px;
+      color: #64748b;
+      margin-top: 8px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto
+    }
+
+    /* FEATURES */
+    .feat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px
+    }
+
+    .feat {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 28px 22px;
+      text-align: center;
+      transition: box-shadow .2s, transform .2s
+    }
+
+    .feat:hover {
+      box-shadow: 0 8px 30px rgba(0, 0, 0, .08);
+      transform: translateY(-4px)
+    }
+
+    .feat-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      margin: 0 auto 16px;
+      background: #eff6ff
+    }
+
+    .feat h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 8px
+    }
+
+    .feat p {
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.5
+    }
+
+    /* TRIGGERS */
+    .trg-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px
+    }
+
+    .trg {
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 18px 20px;
+      background: #fff;
+      transition: .15s
+    }
+
+    .trg.hot {
+      border-color: #fca5a5;
+      background: #fff5f5
+    }
+
+    .trg-top {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px
+    }
+
+    .trg-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #d1d5db
+    }
+
+    .trg-dot.on {
+      background: #ef4444;
+      box-shadow: 0 0 6px rgba(239, 68, 68, .5)
+    }
+
+    .trg-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: #0f172a
+    }
+
+    .trg-val {
+      font-size: 13px;
+      color: #64748b
+    }
+
+    .trg-badge {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-top: 6px
+    }
+
+    .trg-badge.active {
+      background: #fee2e2;
+      color: #991b1b
+    }
+
+    .trg-badge.ok {
+      background: #dcfce7;
+      color: #166534
+    }
+
+    .sim-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+      justify-content: center
+    }
+
+    .sim-btn {
+      background: #ef4444;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit
+    }
+
+    .sim-btn:hover {
+      background: #dc2626
+    }
+
+    /* PARTNERS */
+    .par-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px
+    }
+
+    .par {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 22px 18px;
+      text-align: center;
+      transition: .2s
+    }
+
+    .par:hover {
+      box-shadow: 0 6px 24px rgba(0, 0, 0, .08);
+      transform: translateY(-3px)
+    }
+
+    .par-av {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #dbeafe;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin: 0 auto 10px
+    }
+
+    .par h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 2px
+    }
+
+    .par-zone {
+      font-size: 12px;
+      color: #64748b
+    }
+
+    .par-plat {
+      font-size: 11px;
+      color: #94a3b8;
+      margin-top: 2px
+    }
+
+    .par-btn {
+      margin-top: 12px;
+      background: #1e3a8a;
+      color: #fff;
+      border: none;
+      padding: 7px 18px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit
+    }
+
+    .par-btn:hover {
+      background: #1e40af
+    }
+
+    /* ACTIVE PARTNER */
+    .ap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 3rem
+    }
+
+    .ap-bar {
+      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+      border-radius: 14px;
+      padding: 20px 28px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px
+    }
+
+    .ap-bar h3 {
+      font-size: 16px;
+      font-weight: 700
+    }
+
+    .ap-bar p {
+      font-size: 13px;
+      opacity: .85;
+      margin-top: 2px
+    }
+
+    /* DASHBOARD */
+    .dash {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 3rem 60px
+    }
+
+    .dtabs {
+      display: flex;
+      gap: 0;
+      border-bottom: 2px solid #e2e8f0;
+      margin-bottom: 28px
+    }
+
+    .dtab {
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      color: #94a3b8;
+      cursor: pointer;
+      padding: 12px 24px;
+      border-bottom: 2.5px solid transparent;
+      margin-bottom: -2px;
+      transition: .15s
+    }
+
+    .dtab:hover {
+      color: #1e3a8a
+    }
+
+    .dtab.on {
+      color: #1e3a8a;
+      border-bottom-color: #1e3a8a
+    }
+
+    .dpg {
+      display: none
+    }
+
+    .dpg.on {
+      display: block
+    }
+
+    /* CARDS / FORMS */
+    .card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 24px
+    }
+
+    .card+.card {
+      margin-top: 16px
+    }
+
+    .ct {
+      font-size: 15px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .g3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 16px
+    }
+
+    .sc {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px
+    }
+
+    .sc:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, .05)
+    }
+
+    .sl {
+      font-size: 11px;
+      font-weight: 600;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      margin-bottom: 6px
+    }
+
+    .sv {
+      font-size: 28px;
+      font-weight: 800;
+      color: #0f172a
+    }
+
+    .sv.blue {
+      color: #1e3a8a
+    }
+
+    .ss {
+      font-size: 12px;
+      color: #94a3b8;
+      margin-top: 4px
+    }
+
+    .prog {
+      margin: 16px 0
+    }
+
+    .prog-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 6px
+    }
+
+    .prog-row span:first-child {
+      font-weight: 600;
+      color: #0f172a
+    }
+
+    .prog-row span:last-child {
+      color: #64748b
+    }
+
+    .prog-track {
+      height: 8px;
+      background: #e2e8f0;
+      border-radius: 8px;
+      overflow: hidden
+    }
+
+    .prog-fill {
+      height: 100%;
+      border-radius: 8px;
+      background: linear-gradient(90deg, #1e3a8a, #3b82f6);
+      transition: width .5s
+    }
+
+    .g2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px
+    }
+
+    .fg {
+      margin-bottom: 14px
+    }
+
+    label.fl {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 5px
+    }
+
+    input[type=text],
+    input[type=tel],
+    select {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: inherit;
+      color: #1a1a1a;
+      outline: none;
+      transition: .15s;
+      background: #fff;
+      appearance: none;
+      -webkit-appearance: none
+    }
+
+    input:focus,
+    select:focus {
+      border-color: #1e3a8a;
+      box-shadow: 0 0 0 3px rgba(30, 58, 138, .1)
+    }
+
+    .pg-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px
+    }
+
+    .pt {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      transition: .15s;
+      user-select: none
+    }
+
+    .pt input {
+      display: none
+    }
+
+    .pt:has(input:checked) {
+      border-color: #1e3a8a;
+      background: #eff6ff;
+      color: #1e3a8a
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+      transition: .15s
+    }
+
+    .bp {
+      background: #1e3a8a;
+      color: #fff;
+      width: 100%
+    }
+
+    .bp:hover {
+      background: #1e40af
+    }
+
+    .bp:disabled {
+      opacity: .5;
+      cursor: not-allowed
+    }
+
+    .bo {
+      background: #fff;
+      color: #1e3a8a;
+      border: 1.5px solid #1e3a8a;
+      width: 100%
+    }
+
+    .bo:hover {
+      background: #eff6ff
+    }
+
+    .bg-s {
+      background: #059669;
+      color: #fff;
+      width: 100%
+    }
+
+    .bg-s:hover {
+      background: #047857
+    }
+
+    .bsm {
+      padding: 8px 14px;
+      font-size: 13px;
+      width: auto
+    }
+
+    .otp {
+      letter-spacing: 9px;
+      font-size: 22px;
+      text-align: center;
+      font-weight: 700
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px
+    }
+
+    th {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .4px;
+      color: #64748b;
+      padding: 10px;
+      border-bottom: 2px solid #e2e8f0;
+      text-align: left
+    }
+
+    td {
+      padding: 12px 10px;
+      border-bottom: 1px solid #f1f5f9;
+      color: #1a1a1a
+    }
+
+    tr:hover td {
+      background: #f8fafc
+    }
+
+    .tw {
+      overflow-x: auto
+    }
+
+    .fr {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #f1f5f9
+    }
+
+    .fr:last-child {
+      border: none
+    }
+
+    .fk {
+      font-size: 13px;
+      color: #64748b;
+      font-weight: 500
+    }
+
+    .fv {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0f172a
+    }
+
+    .tier {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 13px
+    }
+
+    .tier.active {
+      background: #eff6ff;
+      color: #1e3a8a;
+      font-weight: 700
+    }
+
+    .al {
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-size: 13px;
+      margin-bottom: 14px;
+      line-height: 1.5
+    }
+
+    .al-s {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #166534
+    }
+
+    .al-e {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #991b1b
+    }
+
+    .al-w {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      color: #92400e
+    }
+
+    .al-i {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1e40af
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600
+    }
+
+    .bs {
+      background: #dcfce7;
+      color: #166534
+    }
+
+    .bw {
+      background: #fef9c3;
+      color: #854d0e
+    }
+
+    .be {
+      background: #fee2e2;
+      color: #991b1b
+    }
+
+    .bi {
+      background: #dbeafe;
+      color: #1e40af
+    }
+
+    .bgg {
+      background: #f1f5f9;
+      color: #64748b
+    }
+
+    .sfb {
+      border: 2px dashed #e2e8f0;
+      border-radius: 10px;
+      padding: 28px;
+      text-align: center;
+      cursor: pointer;
+      transition: .15s;
+      margin-bottom: 14px
+    }
+
+    .sfb:hover,
+    .sfb.ok {
+      border-color: #1e3a8a
+    }
+
+    .sfb.ok {
+      background: #eff6ff
+    }
+
+    .auth-card {
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 14px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, .06);
+      padding: 2.5rem 2rem
+    }
+
+    .auth-card h2 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 4px
+    }
+
+    .auth-card .sub {
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 22px
+    }
+
+    .sdots {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 22px
+    }
+
+    .sdot {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #e2e8f0;
+      color: #94a3b8;
+      flex-shrink: 0
+    }
+
+    .sdot.cur {
+      background: #1e3a8a;
+      color: #fff
+    }
+
+    .sdot.ok {
+      background: #059669;
+      color: #fff
+    }
+
+    .sline {
+      flex: 1;
+      height: 2px;
+      background: #e2e8f0
+    }
+
+    .suc {
+      text-align: center;
+      padding: 2rem 0
+    }
+
+    .uid {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #1e3a8a;
+      background: #eff6ff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      display: inline-block;
+      margin: 10px 0
+    }
+
+    .pbar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      background: #fff
+    }
+
+    .pbar label {
+      font-size: 13px;
+      font-weight: 500;
+      color: #64748b;
+      white-space: nowrap;
+      margin: 0
+    }
+
+    .spi {
+      width: 15px;
+      height: 15px;
+      border: 2px solid rgba(255, 255, 255, .35);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: sp .65s linear infinite;
+      display: inline-block
+    }
+
+    @keyframes sp {
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
+    #toast {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      background: #0f172a;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 500;
+      z-index: 9999;
+      display: none;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, .2);
+      max-width: 320px
+    }
+
+    /* FOOTER */
+    .footer {
+      background: #0f172a;
+      color: #fff;
+      padding: 60px 3rem 30px
+    }
+
+    .footer-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px
+    }
+
+    .footer h4 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      color: #e2e8f0
+    }
+
+    .footer p {
+      font-size: 13px;
+      color: #94a3b8;
+      line-height: 1.6
+    }
+
+    .footer a {
+      display: block;
+      font-size: 13px;
+      color: #94a3b8;
+      text-decoration: none;
+      margin-bottom: 8px;
+      transition: .15s
+    }
+
+    .footer a:hover {
+      color: #fff
+    }
+
+    .footer-bar {
+      max-width: 1200px;
+      margin: 0 auto;
+      border-top: 1px solid #1e293b;
+      padding-top: 20px;
+      text-align: center;
+      font-size: 12px;
+      color: #64748b
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:1024px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center
+      }
+
+      .hero-img {
+        max-width: 500px;
+        margin: 0 auto
+      }
+
+      .hero-btns {
+        justify-content: center
+      }
+
+      .hero-stats {
+        grid-column: span 1
+      }
+
+      .feat-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .par-grid {
+        grid-template-columns: repeat(3, 1fr)
+      }
+
+      .trg-grid {
+        grid-template-columns: repeat(3, 1fr)
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr
+      }
+    }
+
+    @media(max-width:768px) {
+      .nav {
+        padding: 0 1rem
+      }
+
+      .nav-tab {
+        padding: 0 10px;
+        font-size: 13px
+      }
+
+      .hero {
+        padding: 80px 1.5rem 40px
+      }
+
+      .hero h1 {
+        font-size: 30px
+      }
+
+      .sec {
+        padding: 50px 1.5rem
+      }
+
+      .g3 {
+        grid-template-columns: 1fr
+      }
+
+      .g2 {
+        grid-template-columns: 1fr
+      }
+
+      .feat-grid {
+        grid-template-columns: 1fr
+      }
+
+      .par-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .trg-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr
+      }
+
+      .dash {
+        padding: 0 1.5rem 40px
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- NAV -->
-<nav class="nav">
-  <div class="nav-logo"><svg viewBox="0 0 28 28" fill="none"><path d="M14 2L3 8v12l11 6 11-6V8L14 2z" fill="#1e3a8a"/><path d="M14 6l-7 4v8l7 4 7-4v-8l-7-4z" fill="#3b82f6"/><path d="M14 10l-3.5 2v4l3.5 2 3.5-2v-4L14 10z" fill="#fff"/></svg>VARSHA</div>
-  <div class="nav-tabs">
-    <button class="nav-tab on" id="nt-home" onclick="goSec('home')">Home</button>
-    <button class="nav-tab" id="nt-policy" onclick="goSec('policy')">Policy</button>
-    <button class="nav-tab" id="nt-premium" onclick="goSec('premium')">Premium</button>
-    <button class="nav-tab" id="nt-claims" onclick="goSec('claims')">Claims</button>
-    <button class="nav-tab" id="nt-register" onclick="goSec('register')">Register</button>
-  </div>
-  <button class="nav-signin" onclick="goSec('register')">Sign In</button>
-</nav>
-
-<!-- HERO -->
-<section class="hero" id="sec-home">
-  <div>
-    <div class="hero-tag">🛡️ AI-Powered Parametric Insurance</div>
-    <h1>Income Protection for <span>Delivery Partners</span></h1>
-    <p class="hero-sub">Get paid instantly when rain, heat, or disruptions stop your work.<br>₹3 per delivery. Shield builds. Payout in 90 seconds.</p>
-    <div class="hero-btns">
-      <button class="hb hb-p" onclick="goSec('register')">Get Started →</button>
-      <button class="hb hb-s" onclick="goSec('policy')">View Dashboard</button>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-logo"><svg viewBox="0 0 28 28" fill="none">
+        <path d="M14 2L3 8v12l11 6 11-6V8L14 2z" fill="#1e3a8a" />
+        <path d="M14 6l-7 4v8l7 4 7-4v-8l-7-4z" fill="#3b82f6" />
+        <path d="M14 10l-3.5 2v4l3.5 2 3.5-2v-4L14 10z" fill="#fff" />
+      </svg>VARSHA</div>
+    <div class="nav-tabs">
+      <button class="nav-tab on" id="nt-home" onclick="goSec('home')">Home</button>
+      <button class="nav-tab" id="nt-policy" onclick="goSec('policy')">Policy</button>
+      <button class="nav-tab" id="nt-premium" onclick="goSec('premium')">Premium</button>
+      <button class="nav-tab" id="nt-claims" onclick="goSec('claims')">Claims</button>
+      <button class="nav-tab" id="nt-register" onclick="goSec('register')">Register</button>
     </div>
-  </div>
-  <div class="hero-img" style="background:linear-gradient(135deg,#1e3a8a 0%,#3b82f6 50%,#60a5fa 100%);display:flex;align-items:center;justify-content:center;min-height:400px">
-    <svg viewBox="0 0 400 300" width="360" height="270" xmlns="http://www.w3.org/2000/svg">
-      <!-- Road -->
-      <rect x="0" y="220" width="400" height="80" fill="#1e293b" rx="8"/>
-      <line x1="20" y1="260" x2="80" y2="260" stroke="#fbbf24" stroke-width="3" stroke-dasharray="12,8"/>
-      <line x1="100" y1="260" x2="180" y2="260" stroke="#fbbf24" stroke-width="3" stroke-dasharray="12,8"/>
-      <line x1="200" y1="260" x2="280" y2="260" stroke="#fbbf24" stroke-width="3" stroke-dasharray="12,8"/>
-      <line x1="300" y1="260" x2="380" y2="260" stroke="#fbbf24" stroke-width="3" stroke-dasharray="12,8"/>
-      <!-- Buildings -->
-      <rect x="20" y="100" width="50" height="120" fill="rgba(255,255,255,.15)" rx="4"/>
-      <rect x="30" y="110" width="12" height="12" fill="rgba(255,255,255,.3)" rx="1"/>
-      <rect x="48" y="110" width="12" height="12" fill="rgba(255,255,255,.3)" rx="1"/>
-      <rect x="30" y="130" width="12" height="12" fill="rgba(255,255,255,.3)" rx="1"/>
-      <rect x="48" y="130" width="12" height="12" fill="rgba(255,255,255,.3)" rx="1"/>
-      <rect x="330" y="120" width="50" height="100" fill="rgba(255,255,255,.12)" rx="4"/>
-      <rect x="340" y="130" width="10" height="10" fill="rgba(255,255,255,.25)" rx="1"/>
-      <rect x="360" y="130" width="10" height="10" fill="rgba(255,255,255,.25)" rx="1"/>
-      <rect x="90" y="140" width="40" height="80" fill="rgba(255,255,255,.1)" rx="4"/>
-      <!-- Scooter -->
-      <ellipse cx="180" cy="215" rx="20" ry="20" fill="#0f172a"/>
-      <ellipse cx="180" cy="215" rx="12" ry="12" fill="#334155"/>
-      <ellipse cx="280" cy="215" rx="20" ry="20" fill="#0f172a"/>
-      <ellipse cx="280" cy="215" rx="12" ry="12" fill="#334155"/>
-      <path d="M170 210 Q190 170 220 175 L270 180 Q285 185 280 210" fill="#ef4444" stroke="#dc2626" stroke-width="2"/>
-      <rect x="210" y="155" width="30" height="25" fill="#fbbf24" rx="4"/>
-      <text x="218" y="172" font-size="12" fill="#0f172a" font-weight="bold">📦</text>
-      <!-- Rider -->
-      <circle cx="210" cy="135" r="14" fill="#fcd34d"/>
-      <rect x="200" y="149" width="20" height="25" fill="#3b82f6" rx="4"/>
-      <line x1="195" y1="158" x2="185" y2="175" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/>
-      <line x1="225" y1="158" x2="240" y2="175" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/>
-      <!-- Shield icon -->
-      <g transform="translate(310,60)">
-        <path d="M30 5 L55 15 L55 35 Q55 55 30 65 Q5 55 5 35 L5 15 Z" fill="rgba(255,255,255,.9)" stroke="#fbbf24" stroke-width="2"/>
-        <text x="22" y="42" font-size="18" fill="#1e3a8a">✓</text>
-      </g>
-      <!-- Rain drops -->
-      <line x1="140" y1="40" x2="136" y2="55" stroke="rgba(255,255,255,.4)" stroke-width="2" stroke-linecap="round"/>
-      <line x1="160" y1="30" x2="156" y2="50" stroke="rgba(255,255,255,.3)" stroke-width="2" stroke-linecap="round"/>
-      <line x1="250" y1="35" x2="246" y2="55" stroke="rgba(255,255,255,.3)" stroke-width="2" stroke-linecap="round"/>
-      <line x1="120" y1="55" x2="116" y2="70" stroke="rgba(255,255,255,.25)" stroke-width="2" stroke-linecap="round"/>
-      <!-- Cloud -->
-      <ellipse cx="170" cy="30" rx="30" ry="15" fill="rgba(255,255,255,.2)"/>
-      <ellipse cx="190" cy="25" rx="25" ry="12" fill="rgba(255,255,255,.15)"/>
-    </svg>
-  </div>
-  <div class="hero-stats">
-    <div class="hs"><div class="hs-n">₹3</div><div class="hs-l">Per Delivery Premium</div></div>
-    <div class="hs"><div class="hs-n">6</div><div class="hs-l">Triggers Monitored</div></div>
-    <div class="hs"><div class="hs-n">90s</div><div class="hs-l">Instant Payout</div></div>
-  </div>
-</section>
+    <button class="nav-signin" onclick="goSec('register')">Sign In</button>
+  </nav>
 
-<!-- FEATURES -->
-<section class="sec-alt">
-<div class="sec">
-  <div class="sec-head"><span class="sec-badge">Our Features</span><h2>Why Delivery Partners Choose VARSHA</h2><p>Affordable, transparent, and instant protection designed specifically for gig workers.</p></div>
-  <div class="feat-grid">
-    <div class="feat"><div class="feat-icon">💰</div><h3>Pay-as-You-Earn</h3><p>Just ₹3 per delivery, capped at ₹75 per week. Never pay more than you need to.</p></div>
-    <div class="feat"><div class="feat-icon">🛡️</div><h3>Shield Protection</h3><p>Build your shield to ₹300, then enjoy free coverage. Your premium works for you.</p></div>
-    <div class="feat"><div class="feat-icon">⚡</div><h3>90-Second Payouts</h3><p>Zero paperwork. Trigger detected → payout credited. Instant money when you need it.</p></div>
-    <div class="feat"><div class="feat-icon">🔄</div><h3>Cross-Platform</h3><p>Works across Swiggy, Zomato, Zepto, and Blinkit. One shield for all your gigs.</p></div>
-  </div>
-</div>
-</section>
-
-<!-- LIVE TRIGGERS -->
-<div class="sec" id="sec-triggers">
-  <div class="sec-head"><span class="sec-badge">Live Status</span><h2>Live Disruption Monitoring</h2><p>Real-time status of weather and platform conditions in Chennai.</p></div>
-  <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:18px">
-    <select id="tz" onchange="chkTrg()" style="padding:8px 14px;border:1px solid #e2e8f0;border-radius:8px;font-size:13px;outline:none;font-family:inherit">
-      <option value="velachery">Velachery</option><option value="madipakkam">Madipakkam</option>
-      <option value="adyar">Adyar</option><option value="omr">OMR</option>
-      <option value="tnagar">T.Nagar</option><option value="annanagar">Anna Nagar</option>
-    </select>
-    <button class="btn bo bsm" onclick="chkTrg()">Refresh</button>
-  </div>
-  <div id="tgg" class="trg-grid">Loading…</div>
-  <div class="sim-row">
-    <button class="sim-btn" onclick="sTrg('rain')">🌧️ Simulate Rain</button>
-    <button class="sim-btn" onclick="sTrg('heat')">☀️ Simulate Heat</button>
-    <button class="sim-btn" onclick="sTrg('aqi')">💨 Simulate AQI</button>
-    <button class="sim-btn" onclick="sTrg('flood')">🌊 Simulate Flood</button>
-  </div>
-</div>
-
-<!-- PARTNERS -->
-<section class="sec-alt">
-<div class="sec">
-  <div class="sec-head"><span class="sec-badge">Quick Access</span><h2>Select a Partner</h2><p>Choose a pre-seeded delivery partner to explore the dashboard.</p></div>
-  <div class="par-grid" id="plist">Loading partners...</div>
-</div>
-</section>
-
-<!-- ACTIVE PARTNER BAR -->
-<div class="sec" id="apwrap" style="display:none;padding-bottom:0">
-  <div class="ap"><div class="ap-bar"><div><h3 id="ap-name">—</h3><p id="ap-info">—</p></div><button class="btn bsm" style="background:rgba(255,255,255,.2);color:#fff;border:1px solid rgba(255,255,255,.3)" onclick="clearP()">✕ Clear</button></div></div>
-</div>
-
-<!-- DASHBOARD TABS -->
-<div class="dash" id="dashwrap" style="display:none">
-  <div class="dtabs">
-    <button class="dtab on" id="dt-policy" onclick="goTab('policy')">🛡️ Policy</button>
-    <button class="dtab" id="dt-premium" onclick="goTab('premium')">📊 Premium</button>
-    <button class="dtab" id="dt-claims" onclick="goTab('claims')">⚡ Claims</button>
-  </div>
-
-  <!-- POLICY -->
-  <div class="dpg on" id="dp-policy">
-    <div class="g3">
-      <div class="sc"><div class="sl">Shield Balance</div><div class="sv" id="pb">₹0</div><div class="ss">Target: ₹<span id="pt2">300</span></div></div>
-      <div class="sc"><div class="sl">Weekly Deductions</div><div class="sv" id="pw">₹0</div><div class="ss">Cap: ₹75 / week</div></div>
-      <div class="sc"><div class="sl">Payout if Triggered</div><div class="sv blue" id="pp">₹0</div><div class="ss" id="pst">Building Shield</div></div>
-    </div>
-    <div class="card"><div class="ct">🛡️ Shield Progress</div>
-      <div class="prog"><div class="prog-row"><span id="ppl">0%</span><span id="ppr">₹0/₹300</span></div><div class="prog-track"><div class="prog-fill" id="pbar" style="width:0%"></div></div></div>
-      <div class="prog"><div class="prog-row"><span style="font-size:12px;color:#64748b">Weekly Cap</span><span id="pwl" style="font-size:12px;color:#64748b">₹0/₹75</span></div><div class="prog-track"><div class="prog-fill" id="wbar" style="width:0%;background:linear-gradient(90deg,#f59e0b,#ef4444)"></div></div></div>
-    </div>
-    <div class="card"><div class="ct">💰 Payout Tiers</div><div id="tiers"></div></div>
-    <div class="card"><div class="ct">📦 Simulate Delivery</div>
-      <div class="g2"><div class="fg"><label class="fl">Orders</label><input type="text" id="sd" value="20"></div><div class="fg"><label class="fl">KM</label><input type="text" id="sk" value="65"></div></div>
-      <button class="btn bg-s" id="simbtn" onclick="simDel()">▶ Simulate & Collect</button>
-      <div id="simres" style="display:none;margin-top:14px"></div>
-    </div>
-    <div class="card"><div class="ct">📋 Recent Deductions</div><div class="tw"><table><thead><tr><th>Amount</th><th>Zone×</th><th>Eff×</th><th>Pred×</th><th>Time</th></tr></thead><tbody id="txns"><tr><td colspan="5" style="text-align:center;color:#94a3b8;padding:20px">Simulate a delivery first.</td></tr></tbody></table></div></div>
-  </div>
-
-  <!-- PREMIUM -->
-  <div class="dpg" id="dp-premium">
-    <div class="g2" style="margin-bottom:16px">
-      <div class="card" style="text-align:center;display:flex;flex-direction:column;justify-content:center;padding:2.5rem">
-        <div class="sl">Premium Per Order</div>
-        <div style="font-size:56px;font-weight:900;color:#1e3a8a;line-height:1.1;margin:10px 0">₹<span id="pamt">3.00</span></div>
-        <div style="font-size:13px;color:#64748b">Base ₹3.00 × <span id="pcf">1.00</span>x</div>
-      </div>
-      <div class="card"><div class="ct">Factor Breakdown</div>
-        <div class="fr"><span class="fk">📍 Zone Risk</span><span class="fv" id="pzone">—</span></div>
-        <div class="fr"><span class="fk">⚡ Efficiency</span><span class="fv" id="peff">—</span></div>
-        <div class="fr"><span class="fk">🌦️ Tomorrow</span><span class="fv" id="ppred">—</span></div>
-        <div class="fr"><span class="fk">🗺️ Zone/Season</span><span class="fv" id="pzs">—</span></div>
+  <!-- HERO -->
+  <section class="hero" id="sec-home">
+    <div>
+      <div class="hero-tag">🛡️ AI-Powered Parametric Insurance</div>
+      <h1>Income Protection for <span>Delivery Partners</span></h1>
+      <p class="hero-sub">Get paid instantly when rain, heat, or disruptions stop your work.<br>₹3 per delivery. Shield
+        builds. Payout in 90 seconds.</p>
+      <div class="hero-btns">
+        <button class="hb hb-p" onclick="goSec('register')">Get Started →</button>
+        <button class="hb hb-s" onclick="goSec('policy')">View Dashboard</button>
       </div>
     </div>
-    <div class="card" style="margin-bottom:16px"><div class="ct" id="fct">🌤️ Forecast</div><p style="font-size:14px;color:#64748b;margin-bottom:10px" id="fce">—</p><div style="background:#eff6ff;border-radius:8px;padding:12px;font-size:13px;color:#1e40af" id="fcr"></div></div>
-    <div class="card"><div class="ct">📊 Zone Hazard Risk</div><div class="tw" id="haz"></div></div>
-  </div>
-
-  <!-- CLAIMS -->
-  <div class="dpg" id="dp-claims">
-    <div class="card" style="margin-bottom:16px">
-      <div class="ct">⚡ Auto-Claim</div>
-      <p style="font-size:13px;color:#64748b;margin-bottom:14px">Check if you're eligible for an instant payout based on active triggers.</p>
-      <button class="btn bp" id="cbtn" onclick="autoClaim()">🔍 Check My Eligibility</button>
-      <div id="cres" style="display:none;margin-top:14px"></div>
-      <div id="osp" style="display:none;margin-top:18px;padding-top:18px;border-top:1px solid #e2e8f0">
-        <div class="ct">📸 Verification Required</div>
-        <div class="al al-i" style="margin-bottom:12px">Demo OTP: <b>123456</b></div>
-        <div class="fg"><label class="fl">Enter OTP</label><input type="text" id="cotp" class="otp" placeholder="······" maxlength="6"></div>
-        <div style="height:12px"></div>
-        <div class="sfb" id="sfb" onclick="takeSelfie()"><div style="font-size:28px">📷</div><div style="font-size:13px;color:#64748b;margin-top:5px" id="sfl">Tap to capture selfie</div></div>
-        <button class="btn bg-s" onclick="vClaim()">✅ Verify & Claim</button>
+    <div class="hero-img"
+      style="background:linear-gradient(135deg,#1e3a8a 0%,#3b82f6 50%,#60a5fa 100%);display:flex;align-items:center;justify-content:center;min-height:400px">
+      <svg viewBox="0 0 400 300" width="360" height="270" xmlns="http://www.w3.org/2000/svg">
+        <!-- Road -->
+        <rect x="0" y="220" width="400" height="80" fill="#1e293b" rx="8" />
+        <line x1="20" y1="260" x2="80" y2="260" stroke="#fbbf24" stroke-width="3" stroke-dasharray="12,8" />
+        <line x1="100" y1="260" x2="180" y2="260" stroke="#fbbf24" stroke-width="3" stroke-dasharray="12,8" />
+        <line x1="200" y1="260" x2="280" y2="260" stroke="#fbbf24" stroke-width="3" stroke-dasharray="12,8" />
+        <line x1="300" y1="260" x2="380" y2="260" stroke="#fbbf24" stroke-width="3" stroke-dasharray="12,8" />
+        <!-- Buildings -->
+        <rect x="20" y="100" width="50" height="120" fill="rgba(255,255,255,.15)" rx="4" />
+        <rect x="30" y="110" width="12" height="12" fill="rgba(255,255,255,.3)" rx="1" />
+        <rect x="48" y="110" width="12" height="12" fill="rgba(255,255,255,.3)" rx="1" />
+        <rect x="30" y="130" width="12" height="12" fill="rgba(255,255,255,.3)" rx="1" />
+        <rect x="48" y="130" width="12" height="12" fill="rgba(255,255,255,.3)" rx="1" />
+        <rect x="330" y="120" width="50" height="100" fill="rgba(255,255,255,.12)" rx="4" />
+        <rect x="340" y="130" width="10" height="10" fill="rgba(255,255,255,.25)" rx="1" />
+        <rect x="360" y="130" width="10" height="10" fill="rgba(255,255,255,.25)" rx="1" />
+        <rect x="90" y="140" width="40" height="80" fill="rgba(255,255,255,.1)" rx="4" />
+        <!-- Scooter -->
+        <ellipse cx="180" cy="215" rx="20" ry="20" fill="#0f172a" />
+        <ellipse cx="180" cy="215" rx="12" ry="12" fill="#334155" />
+        <ellipse cx="280" cy="215" rx="20" ry="20" fill="#0f172a" />
+        <ellipse cx="280" cy="215" rx="12" ry="12" fill="#334155" />
+        <path d="M170 210 Q190 170 220 175 L270 180 Q285 185 280 210" fill="#ef4444" stroke="#dc2626"
+          stroke-width="2" />
+        <rect x="210" y="155" width="30" height="25" fill="#fbbf24" rx="4" />
+        <text x="218" y="172" font-size="12" fill="#0f172a" font-weight="bold">📦</text>
+        <!-- Rider -->
+        <circle cx="210" cy="135" r="14" fill="#fcd34d" />
+        <rect x="200" y="149" width="20" height="25" fill="#3b82f6" rx="4" />
+        <line x1="195" y1="158" x2="185" y2="175" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" />
+        <line x1="225" y1="158" x2="240" y2="175" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" />
+        <!-- Shield icon -->
+        <g transform="translate(310,60)">
+          <path d="M30 5 L55 15 L55 35 Q55 55 30 65 Q5 55 5 35 L5 15 Z" fill="rgba(255,255,255,.9)" stroke="#fbbf24"
+            stroke-width="2" />
+          <text x="22" y="42" font-size="18" fill="#1e3a8a">✓</text>
+        </g>
+        <!-- Rain drops -->
+        <line x1="140" y1="40" x2="136" y2="55" stroke="rgba(255,255,255,.4)" stroke-width="2" stroke-linecap="round" />
+        <line x1="160" y1="30" x2="156" y2="50" stroke="rgba(255,255,255,.3)" stroke-width="2" stroke-linecap="round" />
+        <line x1="250" y1="35" x2="246" y2="55" stroke="rgba(255,255,255,.3)" stroke-width="2" stroke-linecap="round" />
+        <line x1="120" y1="55" x2="116" y2="70" stroke="rgba(255,255,255,.25)" stroke-width="2"
+          stroke-linecap="round" />
+        <!-- Cloud -->
+        <ellipse cx="170" cy="30" rx="30" ry="15" fill="rgba(255,255,255,.2)" />
+        <ellipse cx="190" cy="25" rx="25" ry="12" fill="rgba(255,255,255,.15)" />
+      </svg>
+    </div>
+    <div class="hero-stats">
+      <div class="hs">
+        <div class="hs-n">₹3</div>
+        <div class="hs-l">Per Delivery Premium</div>
+      </div>
+      <div class="hs">
+        <div class="hs-n">6</div>
+        <div class="hs-l">Triggers Monitored</div>
+      </div>
+      <div class="hs">
+        <div class="hs-n">90s</div>
+        <div class="hs-l">Instant Payout</div>
       </div>
     </div>
-    <div class="card"><div class="ct">📋 Claims History</div><div class="tw"><table><thead><tr><th>Trigger</th><th>Payout</th><th>Status</th><th>Score</th><th>Zone</th><th>Date</th></tr></thead><tbody id="htbl"><tr><td colspan="6" style="text-align:center;color:#94a3b8;padding:20px">No claims yet.</td></tr></tbody></table></div></div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="sec-alt">
+    <div class="sec">
+      <div class="sec-head"><span class="sec-badge">Our Features</span>
+        <h2>Why Delivery Partners Choose VARSHA</h2>
+        <p>Affordable, transparent, and instant protection designed specifically for gig workers.</p>
+      </div>
+      <div class="feat-grid">
+        <div class="feat">
+          <div class="feat-icon">💰</div>
+          <h3>Pay-as-You-Earn</h3>
+          <p>Just ₹3 per delivery, capped at ₹75 per week. Never pay more than you need to.</p>
+        </div>
+        <div class="feat">
+          <div class="feat-icon">🛡️</div>
+          <h3>Shield Protection</h3>
+          <p>Build your shield to ₹300, then enjoy free coverage. Your premium works for you.</p>
+        </div>
+        <div class="feat">
+          <div class="feat-icon">⚡</div>
+          <h3>90-Second Payouts</h3>
+          <p>Zero paperwork. Trigger detected → payout credited. Instant money when you need it.</p>
+        </div>
+        <div class="feat">
+          <div class="feat-icon">🔄</div>
+          <h3>Cross-Platform</h3>
+          <p>Works across Swiggy, Zomato, Zepto, and Blinkit. One shield for all your gigs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVE TRIGGERS -->
+  <div class="sec" id="sec-triggers">
+    <div class="sec-head"><span class="sec-badge">Live Status</span>
+      <h2>Live Disruption Monitoring</h2>
+      <p>Real-time status of weather and platform conditions in Chennai.</p>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:18px">
+      <select id="tz" onchange="chkTrg()"
+        style="padding:8px 14px;border:1px solid #e2e8f0;border-radius:8px;font-size:13px;outline:none;font-family:inherit">
+        <option value="velachery">Velachery</option>
+        <option value="madipakkam">Madipakkam</option>
+        <option value="adyar">Adyar</option>
+        <option value="omr">OMR</option>
+        <option value="tnagar">T.Nagar</option>
+        <option value="annanagar">Anna Nagar</option>
+      </select>
+      <button class="btn bo bsm" onclick="chkTrg()">Refresh</button>
+    </div>
+    <div id="tgg" class="trg-grid">Loading…</div>
+    <div class="sim-row">
+      <button class="sim-btn" onclick="sTrg('rain')">🌧️ Simulate Rain</button>
+      <button class="sim-btn" onclick="sTrg('heat')">☀️ Simulate Heat</button>
+      <button class="sim-btn" onclick="sTrg('aqi')">💨 Simulate AQI</button>
+      <button class="sim-btn" onclick="sTrg('flood')">🌊 Simulate Flood</button>
+    </div>
   </div>
-</div>
 
-<!-- REGISTER (shown as tab content) -->
-<div class="sec" id="sec-register" style="display:none;padding-top:100px">
-  <div class="auth-card">
-    <div class="sdots"><div class="sdot cur" id="sd1">1</div><div class="sline"></div><div class="sdot" id="sd2">2</div><div class="sline"></div><div class="sdot" id="sd3">3</div></div>
-    <div id="s1"><h2>Join VARSHA</h2><p class="sub">Enter your mobile to get started.</p><div class="fg"><label class="fl">Mobile Number</label><input type="tel" id="r-mob" placeholder="10-digit mobile" maxlength="10"></div><div id="e1" class="al al-e" style="display:none"></div><button class="btn bp" onclick="sendOTP()"><span id="s1btn">Send OTP</span></button></div>
-    <div id="s2" style="display:none"><h2>Verify Mobile</h2><p class="sub">OTP sent to <b id="om"></b> — <span style="color:#1e3a8a;font-weight:600">Demo: 123456</span></p><div class="fg"><label class="fl">Enter OTP</label><input type="text" id="r-otp" class="otp" placeholder="······" maxlength="6"></div><div id="e2" class="al al-e" style="display:none"></div><button class="btn bp" onclick="vOTP()" style="margin-bottom:9px">Verify OTP</button><button class="btn bo" onclick="gs(1)">← Back</button></div>
-    <div id="s3" style="display:none"><h2>Complete Profile</h2><p class="sub">Final step to activate your shield.</p><div class="fg"><label class="fl">Full Name</label><input type="text" id="r-name" placeholder="Your full name"></div><div class="fg"><label class="fl">Zone</label><select id="r-zone"><option value="">Select zone…</option><option value="velachery">Velachery</option><option value="madipakkam">Madipakkam</option><option value="adyar">Adyar</option><option value="omr">OMR</option><option value="tnagar">T.Nagar</option><option value="annanagar">Anna Nagar</option></select></div><div class="fg"><label class="fl">UPI ID</label><input type="text" id="r-upi" placeholder="name@okaxis"></div><div class="fg"><label class="fl">Platforms</label><div class="pg-row"><label class="pt"><input type="checkbox" value="swiggy" class="pcb">🟠 Swiggy</label><label class="pt"><input type="checkbox" value="zomato" class="pcb">🔴 Zomato</label><label class="pt"><input type="checkbox" value="zepto" class="pcb">🟣 Zepto</label><label class="pt"><input type="checkbox" value="blinkit" class="pcb">🟡 Blinkit</label></div></div><div id="e3" class="al al-e" style="display:none"></div><button class="btn bp" id="sbt" onclick="subReg()">Create Account</button></div>
-    <div id="s4" style="display:none"><div class="suc"><div style="font-size:40px">🎉</div><h2 style="margin:10px 0 5px">You're in!</h2><p style="color:#64748b;font-size:13px;margin-bottom:14px">Your Universal Worker ID</p><div class="uid" id="r-uid"></div><p style="font-size:12px;color:#94a3b8;margin-top:8px">Save this to access your dashboard.</p></div><button class="btn bp" onclick="goSec('policy');goPolicy()" style="margin-bottom:9px">Go to Dashboard →</button><button class="btn bo" onclick="resetReg()">Register Another</button></div>
+  <!-- PARTNERS -->
+  <section class="sec-alt">
+    <div class="sec">
+      <div class="sec-head"><span class="sec-badge">Quick Access</span>
+        <h2>Select a Partner</h2>
+        <p>Choose a pre-seeded delivery partner to explore the dashboard.</p>
+      </div>
+      <div class="par-grid" id="plist">Loading partners...</div>
+    </div>
+  </section>
+
+  <!-- ACTIVE PARTNER BAR -->
+  <div class="sec" id="apwrap" style="display:none;padding-bottom:0">
+    <div class="ap">
+      <div class="ap-bar">
+        <div>
+          <h3 id="ap-name">—</h3>
+          <p id="ap-info">—</p>
+        </div><button class="btn bsm"
+          style="background:rgba(255,255,255,.2);color:#fff;border:1px solid rgba(255,255,255,.3)" onclick="clearP()">✕
+          Clear</button>
+      </div>
+    </div>
   </div>
-</div>
 
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-grid">
-    <div><div class="nav-logo" style="margin-bottom:14px;color:#fff">🛡️ VARSHA</div><p>Income protection for delivery partners. Instant payouts when disruptions strike. Zero paperwork. AI-powered.</p></div>
-    <div><h4>Product</h4><a href="#" onclick="goSec('policy')">Policy</a><a href="#" onclick="goSec('premium')">Premium</a><a href="#" onclick="goSec('claims')">Claims</a><a href="#" onclick="goSec('register')">Register</a></div>
-    <div><h4>Support</h4><a href="#">FAQ</a><a href="#">Contact</a><a href="#">Status</a></div>
-    <div><h4>Legal</h4><a href="#">Terms</a><a href="#">Privacy</a><a href="#">Compliance</a></div>
+  <!-- DASHBOARD TABS -->
+  <div class="dash" id="dashwrap" style="display:none">
+    <div class="dtabs">
+      <button class="dtab on" id="dt-policy" onclick="goTab('policy')">🛡️ Policy</button>
+      <button class="dtab" id="dt-premium" onclick="goTab('premium')">📊 Premium</button>
+      <button class="dtab" id="dt-claims" onclick="goTab('claims')">⚡ Claims</button>
+    </div>
+
+    <!-- POLICY -->
+    <div class="dpg on" id="dp-policy">
+      <div class="g3">
+        <div class="sc">
+          <div class="sl">Shield Balance</div>
+          <div class="sv" id="pb">₹0</div>
+          <div class="ss">Target: ₹<span id="pt2">300</span></div>
+        </div>
+        <div class="sc">
+          <div class="sl">Weekly Deductions</div>
+          <div class="sv" id="pw">₹0</div>
+          <div class="ss">Cap: ₹75 / week</div>
+        </div>
+        <div class="sc">
+          <div class="sl">Payout if Triggered</div>
+          <div class="sv blue" id="pp">₹0</div>
+          <div class="ss" id="pst">Building Shield</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ct">🛡️ Shield Progress</div>
+        <div class="prog">
+          <div class="prog-row"><span id="ppl">0%</span><span id="ppr">₹0/₹300</span></div>
+          <div class="prog-track">
+            <div class="prog-fill" id="pbar" style="width:0%"></div>
+          </div>
+        </div>
+        <div class="prog">
+          <div class="prog-row"><span style="font-size:12px;color:#64748b">Weekly Cap</span><span id="pwl"
+              style="font-size:12px;color:#64748b">₹0/₹75</span></div>
+          <div class="prog-track">
+            <div class="prog-fill" id="wbar" style="width:0%;background:linear-gradient(90deg,#f59e0b,#ef4444)"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ct">💰 Payout Tiers</div>
+        <div id="tiers"></div>
+      </div>
+      <div class="card">
+        <div class="ct">📦 Simulate Delivery</div>
+        <div class="g2">
+          <div class="fg"><label class="fl">Orders</label><input type="text" id="sd" value="20"></div>
+          <div class="fg"><label class="fl">KM</label><input type="text" id="sk" value="65"></div>
+        </div>
+        <button class="btn bg-s" id="simbtn" onclick="simDel()">▶ Simulate & Collect</button>
+        <div id="simres" style="display:none;margin-top:14px"></div>
+      </div>
+      <div class="card">
+        <div class="ct">📋 Recent Deductions</div>
+        <div class="tw">
+          <table>
+            <thead>
+              <tr>
+                <th>Amount</th>
+                <th>Zone×</th>
+                <th>Eff×</th>
+                <th>Pred×</th>
+                <th>Time</th>
+              </tr>
+            </thead>
+            <tbody id="txns">
+              <tr>
+                <td colspan="5" style="text-align:center;color:#94a3b8;padding:20px">Simulate a delivery first.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- PREMIUM -->
+    <div class="dpg" id="dp-premium">
+      <div class="g2" style="margin-bottom:16px">
+        <div class="card"
+          style="text-align:center;display:flex;flex-direction:column;justify-content:center;padding:2.5rem">
+          <div class="sl">Premium Per Order</div>
+          <div style="font-size:56px;font-weight:900;color:#1e3a8a;line-height:1.1;margin:10px 0">₹<span
+              id="pamt">3.00</span></div>
+          <div style="font-size:13px;color:#64748b">Base ₹3.00 × <span id="pcf">1.00</span>x</div>
+        </div>
+        <div class="card">
+          <div class="ct">Factor Breakdown</div>
+          <div class="fr"><span class="fk">📍 Zone Risk</span><span class="fv" id="pzone">—</span></div>
+          <div class="fr"><span class="fk">⚡ Efficiency</span><span class="fv" id="peff">—</span></div>
+          <div class="fr"><span class="fk">🌦️ Tomorrow</span><span class="fv" id="ppred">—</span></div>
+          <div class="fr"><span class="fk">🗺️ Zone/Season</span><span class="fv" id="pzs">—</span></div>
+        </div>
+      </div>
+      <div class="card" style="margin-bottom:16px">
+        <div class="ct" id="fct">🌤️ Forecast</div>
+        <p style="font-size:14px;color:#64748b;margin-bottom:10px" id="fce">—</p>
+        <div style="background:#eff6ff;border-radius:8px;padding:12px;font-size:13px;color:#1e40af" id="fcr"></div>
+      </div>
+      <div class="card">
+        <div class="ct">📊 Zone Hazard Risk</div>
+        <div class="tw" id="haz"></div>
+      </div>
+    </div>
+
+    <!-- CLAIMS -->
+    <div class="dpg" id="dp-claims">
+      <div class="card" style="margin-bottom:16px">
+        <div class="ct">⚡ Auto-Claim</div>
+        <p style="font-size:13px;color:#64748b;margin-bottom:14px">Check if you're eligible for an instant payout based
+          on active triggers.</p>
+        <button class="btn bp" id="cbtn" onclick="autoClaim()">🔍 Check My Eligibility</button>
+        <div id="cres" style="display:none;margin-top:14px"></div>
+        <div id="osp" style="display:none;margin-top:18px;padding-top:18px;border-top:1px solid #e2e8f0">
+          <div class="ct">📸 Verification Required</div>
+          <div class="al al-i" style="margin-bottom:12px">Demo OTP: <b>123456</b></div>
+          <div class="fg"><label class="fl">Enter OTP</label><input type="text" id="cotp" class="otp"
+              placeholder="······" maxlength="6"></div>
+          <div style="height:12px"></div>
+          <div class="sfb" id="sfb" onclick="takeSelfie()">
+            <div style="font-size:28px">📷</div>
+            <div style="font-size:13px;color:#64748b;margin-top:5px" id="sfl">Tap to capture selfie</div>
+          </div>
+          <button class="btn bg-s" onclick="vClaim()">✅ Verify & Claim</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ct">📋 Claims History</div>
+        <div class="tw">
+          <table>
+            <thead>
+              <tr>
+                <th>Trigger</th>
+                <th>Payout</th>
+                <th>Status</th>
+                <th>Score</th>
+                <th>Zone</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody id="htbl">
+              <tr>
+                <td colspan="6" style="text-align:center;color:#94a3b8;padding:20px">No claims yet.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="footer-bar">© 2026 VARSHA. All rights reserved. Built for DEVTrails 2026.</div>
-</footer>
 
-<div id="toast"></div>
+  <!-- REGISTER (shown as tab content) -->
+  <div class="sec" id="sec-register" style="display:none;padding-top:100px">
+    <div class="auth-card">
+      <div class="sdots">
+        <div class="sdot cur" id="sd1">1</div>
+        <div class="sline"></div>
+        <div class="sdot" id="sd2">2</div>
+        <div class="sline"></div>
+        <div class="sdot" id="sd3">3</div>
+      </div>
+      <div id="s1">
+        <h2>Join VARSHA</h2>
+        <p class="sub">Enter your mobile to get started.</p>
+        <div class="fg"><label class="fl">Mobile Number</label><input type="tel" id="r-mob"
+            placeholder="10-digit mobile" maxlength="10"></div>
+        <div id="e1" class="al al-e" style="display:none"></div><button class="btn bp" onclick="sendOTP()"><span
+            id="s1btn">Send OTP</span></button>
+      </div>
+      <div id="s2" style="display:none">
+        <h2>Verify Mobile</h2>
+        <p class="sub">OTP sent to <b id="om"></b> — <span style="color:#1e3a8a;font-weight:600">Demo: 123456</span></p>
+        <div class="fg"><label class="fl">Enter OTP</label><input type="text" id="r-otp" class="otp"
+            placeholder="······" maxlength="6"></div>
+        <div id="e2" class="al al-e" style="display:none"></div><button class="btn bp" onclick="vOTP()"
+          style="margin-bottom:9px">Verify OTP</button><button class="btn bo" onclick="gs(1)">← Back</button>
+      </div>
+      <div id="s3" style="display:none">
+        <h2>Complete Profile</h2>
+        <p class="sub">Final step to activate your shield.</p>
+        <div class="fg"><label class="fl">Full Name</label><input type="text" id="r-name" placeholder="Your full name">
+        </div>
+        <div class="fg"><label class="fl">Zone</label><select id="r-zone">
+            <option value="">Select zone…</option>
+            <option value="velachery">Velachery</option>
+            <option value="madipakkam">Madipakkam</option>
+            <option value="adyar">Adyar</option>
+            <option value="omr">OMR</option>
+            <option value="tnagar">T.Nagar</option>
+            <option value="annanagar">Anna Nagar</option>
+          </select></div>
+        <div class="fg"><label class="fl">UPI ID</label><input type="text" id="r-upi" placeholder="name@okaxis"></div>
+        <div class="fg"><label class="fl">Platforms</label>
+          <div class="pg-row"><label class="pt"><input type="checkbox" value="swiggy" class="pcb">🟠
+              Swiggy</label><label class="pt"><input type="checkbox" value="zomato" class="pcb">🔴 Zomato</label><label
+              class="pt"><input type="checkbox" value="zepto" class="pcb">🟣 Zepto</label><label class="pt"><input
+                type="checkbox" value="blinkit" class="pcb">🟡 Blinkit</label></div>
+        </div>
+        <div id="e3" class="al al-e" style="display:none"></div><button class="btn bp" id="sbt"
+          onclick="subReg()">Create Account</button>
+      </div>
+      <div id="s4" style="display:none">
+        <div class="suc">
+          <div style="font-size:40px">🎉</div>
+          <h2 style="margin:10px 0 5px">You're in!</h2>
+          <p style="color:#64748b;font-size:13px;margin-bottom:14px">Your Universal Worker ID</p>
+          <div class="uid" id="r-uid"></div>
+          <p style="font-size:12px;color:#94a3b8;margin-top:8px">Save this to access your dashboard.</p>
+        </div><button class="btn bp" onclick="goSec('policy');goPolicy()" style="margin-bottom:9px">Go to Dashboard
+          →</button><button class="btn bo" onclick="resetReg()">Register Another</button>
+      </div>
+    </div>
+  </div>
 
-<script>
-const API='http://localhost:8000';
-let partners=[],selfieDone=false,pendingClaim=null,curPid=null;
-async function api(m,p,b){const o={method:m,headers:{'Content-Type':'application/json'}};if(b)o.body=JSON.stringify(b);const r=await fetch(API+p,o),d=await r.json();if(!r.ok)throw new Error(d.detail||'Failed');return d;}
-function toast(msg,t='info'){const e=document.getElementById('toast');const c={success:'#059669',error:'#ef4444',warn:'#f59e0b',info:'#1e3a8a'};e.textContent=msg;e.style.borderLeft=`4px solid ${c[t]||c.info}`;e.style.display='block';clearTimeout(e._t);e._t=setTimeout(()=>e.style.display='none',3200);}
-// SECTIONS
-function goSec(s){
-  document.querySelectorAll('.nav-tab').forEach(b=>b.classList.remove('on'));
-  const nt=document.getElementById('nt-'+s);if(nt)nt.classList.add('on');
-  const home=document.getElementById('sec-home');
-  const feat=document.querySelector('.sec-alt');
-  const trigs=document.getElementById('sec-triggers');
-  const pars=document.querySelectorAll('.sec-alt')[1];
-  const reg=document.getElementById('sec-register');
-  const dash=document.getElementById('dashwrap');
-  const ap=document.getElementById('apwrap');
-  if(s==='home'){home.style.display='';feat.style.display='';trigs.style.display='';if(pars)pars.style.display='';reg.style.display='none';dash.style.display=curPid?'':'none';ap.style.display=curPid?'':'none';}
-  else if(s==='register'){home.style.display='none';feat.style.display='none';trigs.style.display='none';if(pars)pars.style.display='none';reg.style.display='';dash.style.display='none';ap.style.display='none';}
-  else{home.style.display='none';feat.style.display='none';trigs.style.display='none';if(pars)pars.style.display='none';reg.style.display='none';dash.style.display='';ap.style.display=curPid?'':'none';goTab(s);if(s==='claims')chkTrg();}
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-function goTab(t){document.querySelectorAll('.dtab').forEach(b=>b.classList.remove('on'));document.querySelectorAll('.dpg').forEach(p=>p.classList.remove('on'));document.getElementById('dt-'+t)?.classList.add('on');document.getElementById('dp-'+t)?.classList.add('on');}
-// PARTNERS
-async function getPartners(){try{partners=await api('GET','/api/partners');renderPars();chkTrg();}catch(e){document.getElementById('plist').innerHTML=`<p style="color:#ef4444">${e.message} — backend on :8000?</p>`;}}
-function renderPars(){const el=document.getElementById('plist');if(!partners.length){el.innerHTML='<p style="color:#94a3b8">No partners.</p>';return;}el.innerHTML=partners.map(p=>`<div class="par"><div class="par-av">👤</div><h4>${p.name}</h4><div class="par-zone">${p.zones[0]}</div><div class="par-plat">${p.platforms.join(', ')}</div><button class="par-btn" onclick="useP('${p.id}')">Select →</button></div>`).join('');}
-function useP(id){curPid=id;const p=partners.find(x=>x.id===id);if(p){document.getElementById('ap-name').textContent=p.name;document.getElementById('ap-info').textContent=`${p.id} | ${p.zones[0]} | ${p.platforms.join(', ')}`;}document.getElementById('apwrap').style.display='';document.getElementById('dashwrap').style.display='';goSec('policy');loadPol();loadPrem();}
-function clearP(){curPid=null;document.getElementById('apwrap').style.display='none';document.getElementById('dashwrap').style.display='none';goSec('home');}
-function goPolicy(){if(curPid){loadPol();loadPrem();}}
-// REGISTER
-function gs(n){[1,2,3,4].forEach(i=>document.getElementById('s'+i).style.display=i===n?'block':'none');[1,2,3].forEach(i=>{const d=document.getElementById('sd'+i);d.className='sdot'+(i===n?' cur':i<n?' ok':'');});}
-function sendOTP(){const mob=document.getElementById('r-mob').value.trim(),e=document.getElementById('e1');e.style.display='none';if(!/^\d{10}$/.test(mob)){e.textContent='Enter valid 10-digit mobile.';e.style.display='block';return;}document.getElementById('om').textContent=mob;gs(2);toast('OTP sent — use 123456','success');}
-function vOTP(){const o=document.getElementById('r-otp').value.trim(),e=document.getElementById('e2');e.style.display='none';if(o!=='123456'){e.textContent='Invalid OTP. Use 123456.';e.style.display='block';return;}gs(3);}
-async function subReg(){const name=document.getElementById('r-name').value.trim(),zone=document.getElementById('r-zone').value,upi=document.getElementById('r-upi').value.trim(),plats=[...document.querySelectorAll('.pcb:checked')].map(c=>c.value),mob=document.getElementById('r-mob').value.trim(),e=document.getElementById('e3');e.style.display='none';if(!name||!zone||!upi||!plats.length){e.textContent='Fill all fields.';e.style.display='block';return;}const btn=document.getElementById('sbt');btn.disabled=true;btn.innerHTML='<span class="spi"></span> Creating…';try{const rd=await api('POST','/api/register',{mobile:mob,name,zones:[zone],upi_id:upi,platforms:plats});await api('POST','/api/verify-otp',{mobile:mob,otp:'123456'});curPid=rd.partner_id;document.getElementById('r-uid').textContent=rd.partner_id;gs(4);await getPartners();toast('Account created! 🎉','success');}catch(err){e.textContent=err.message;e.style.display='block';}btn.disabled=false;btn.textContent='Create Account';}
-function resetReg(){gs(1);['r-mob','r-otp','r-name','r-upi'].forEach(id=>document.getElementById(id).value='');}
-// POLICY
-const TIERS=[[300,2000],[250,1500],[200,1200],[150,900],[100,600],[50,300],[0,0]];
-function payout(b){for(const[t,p]of TIERS)if(b>=t&&p>0)return p;return 0;}
-function renderTiers(bal){document.getElementById('tiers').innerHTML=TIERS.map(([t,p])=>{const a=p>0&&bal>=t&&bal<(TIERS[TIERS.indexOf(TIERS.find(x=>x[0]===t))-1]?.[0]||9999);return`<div class="tier${a?' active':''}"><span>₹${t}+ balance</span><span style="font-weight:700">₹${p.toLocaleString()}</span></div>`;}).join('');}
-async function loadPol(){if(!curPid)return;try{const d=await api('GET',`/api/policy/${curPid}`);document.getElementById('pb').textContent='₹'+d.shield_balance;document.getElementById('pt2').textContent=d.shield_target;document.getElementById('pw').textContent='₹'+d.weekly_deductions_this_week;document.getElementById('pp').textContent='₹'+payout(d.shield_balance).toLocaleString();document.getElementById('pst').textContent=d.status;document.getElementById('pbar').style.width=d.percentage+'%';document.getElementById('ppl').textContent=d.percentage+'%';document.getElementById('ppr').textContent=`₹${d.shield_balance}/₹${d.shield_target}`;const wp=Math.min(100,Math.round(d.weekly_deductions_this_week/75*100));document.getElementById('wbar').style.width=wp+'%';document.getElementById('pwl').textContent=`₹${d.weekly_deductions_this_week}/₹75`;renderTiers(d.shield_balance);const tb=document.getElementById('txns');tb.innerHTML=d.last_5_deductions.length?d.last_5_deductions.map(t=>`<tr><td>₹${t.amount}</td><td>${t.zone_factor}x</td><td>${t.efficiency_factor}x</td><td>${t.predictive_factor}x</td><td style="color:#64748b">${new Date(t.timestamp).toLocaleTimeString()}</td></tr>`).join(''):'<tr><td colspan="5" style="text-align:center;color:#94a3b8;padding:16px">No deductions yet.</td></tr>';}catch(e){toast(e.message,'error');}}
-async function simDel(){if(!curPid){toast('Select partner first','error');return;}const btn=document.getElementById('simbtn');btn.disabled=true;btn.innerHTML='<span class="spi"></span> Simulating…';try{const r=await api('POST','/api/policy/simulate-delivery',{partner_id:curPid,platform:'swiggy',deliveries_today:parseInt(document.getElementById('sd').value)||20,total_kilometers:parseFloat(document.getElementById('sk').value)||65});const el=document.getElementById('simres');el.style.display='block';el.innerHTML=`<div class="al al-s"><b>Done!</b> ${r.deliveries_processed} orders · Deduction: <b>₹${r.total_deduction}</b> · Balance: <b>₹${r.new_shield_balance}</b>${r.capped?'<br/>⚠️ Weekly cap reached.':''}</div>`;await loadPol();toast(`₹${r.total_deduction} added`,'success');}catch(e){toast(e.message,'error');}btn.disabled=false;btn.textContent='▶ Simulate & Collect';}
-// PREMIUM
-async function loadPrem(){if(!curPid)return;try{const d=await api('GET',`/api/ml/premium/${curPid}`);document.getElementById('pamt').textContent=d.premium_per_order.toFixed(2);document.getElementById('pcf').textContent=d.combined_factor.toFixed(3);document.getElementById('pzone').textContent=d.zone_factor+'x';document.getElementById('peff').textContent=d.efficiency_factor+'x';document.getElementById('ppred').textContent=d.predictive_factor+'x';document.getElementById('pzs').textContent=`${d.zone.toUpperCase()} / ${d.season}`;const f=d.tomorrow_forecast;document.getElementById('fct').textContent=`${f.icon} Forecast`;document.getElementById('fce').textContent=`${f.weather_event} — risk ${f.risk_factor}x`;document.getElementById('fcr').textContent='💡 '+f.recommendation;const zr=await api('GET',`/api/ml/zone-risk/${d.zone}`);const rb=zr.risk_breakdown;document.getElementById('haz').innerHTML=`<table><thead><tr><th>Hazard</th><th>Factor</th><th>Level</th></tr></thead><tbody>`+Object.entries(rb).filter(([k])=>k!=='base').map(([h,v])=>`<tr><td>${h.charAt(0).toUpperCase()+h.slice(1)}</td><td style="font-weight:700">${v}x</td><td>${v>1.3?'<span class="badge be">High</span>':v>1?'<span class="badge bw">Medium</span>':'<span class="badge bs">Low</span>'}</td></tr>`).join('')+'</tbody></table>';}catch(e){toast(e.message,'error');}}
-// CLAIMS
-async function chkTrg(){const zone=document.getElementById('tz').value;try{const d=await api('GET',`/api/triggers/check/${zone}`);const td=d.trigger_details;const items=[{k:'rain',n:'🌧️ Rain',v:`${td.rain.rainfall_mm}mm`},{k:'heat',n:'🔥 Heat',v:`${td.heat.temperature_c}°C`},{k:'flood',n:'🌊 Flood',v:td.flood.water_level||'—'},{k:'aqi',n:'🌫️ AQI',v:`${td.aqi.aqi}`},{k:'curfew',n:'🚫 Curfew',v:td.curfew.triggered?'Active':'None'}];document.getElementById('tgg').innerHTML=items.map(i=>`<div class="trg${td[i.k].triggered?' hot':''}"><div class="trg-top"><div class="trg-dot${td[i.k].triggered?' on':''}"></div><div class="trg-name">${i.n}</div></div><div class="trg-val">${i.v}</div>${td[i.k].triggered?'<div class="trg-badge active">ACTIVE</div>':'<div class="trg-badge ok">NORMAL</div>'}</div>`).join('');if(d.any_triggered)toast(`⚡ Trigger active in ${zone}!`,'warn');}catch(e){document.getElementById('tgg').innerHTML=`<p style="color:#ef4444">${e.message}</p>`;}}
-async function sTrg(type){const zone=document.getElementById('tz').value;try{await api('POST',`/api/triggers/simulate?zone=${zone}&trigger_type=${type}&active=true`);toast(`${type.toUpperCase()} activated`,'warn');await chkTrg();}catch(e){toast(e.message,'error');}}
-async function autoClaim(){if(!curPid){toast('Select partner first','error');return;}const btn=document.getElementById('cbtn');btn.disabled=true;btn.innerHTML='<span class="spi"></span> Checking…';pendingClaim=null;document.getElementById('osp').style.display='none';try{const d=await api('POST',`/api/claims/auto/${curPid}`);const el=document.getElementById('cres');el.style.display='block';if(!d.triggered){el.innerHTML=`<div class="al al-i">😴 ${d.message}</div>`;}else if(d.status==='auto_approved'){el.innerHTML=`<div class="al al-s">🎉 <b>AUTO-APPROVED!</b> ₹${d.payout_amount.toLocaleString()} credited. Score: ${(d.coherence_score*100).toFixed(0)}%</div>`;toast('₹'+d.payout_amount.toLocaleString()+' approved!','success');}else if(d.status==='otp_required'){pendingClaim=d.claim_id;el.innerHTML=`<div class="al al-w">🔐 Verification needed · ₹${d.payout_amount.toLocaleString()} · Score: ${(d.coherence_score*100).toFixed(0)}%</div>`;document.getElementById('osp').style.display='block';}else if(d.status==='manual_review'){el.innerHTML=`<div class="al al-w">🔍 Manual review · ₹${d.payout_amount.toLocaleString()}</div>`;}else{el.innerHTML=`<div class="al al-e">🚨 ${d.message}</div>`;}loadHist();}catch(e){document.getElementById('cres').style.display='block';document.getElementById('cres').innerHTML=`<div class="al al-e">❌ ${e.message}</div>`;}btn.disabled=false;btn.textContent='🔍 Check My Eligibility';}
-function takeSelfie(){selfieDone=true;document.getElementById('sfb').classList.add('ok');document.getElementById('sfl').textContent='✅ Captured';}
-async function vClaim(){if(!pendingClaim){toast('No pending claim','error');return;}if(!selfieDone){toast('Capture selfie first','error');return;}const otp=document.getElementById('cotp').value.trim();try{const r=await api('POST',`/api/claims/verify-otp-selfie?claim_id=${pendingClaim}&otp=${otp}&selfie_base64=MOCK`);document.getElementById('osp').style.display='none';document.getElementById('cres').innerHTML=`<div class="al al-s">✅ Verified! ₹${r.payout_amount.toLocaleString()} credited!</div>`;toast('Payout processed!','success');loadHist();}catch(e){toast(e.message,'error');}}
-function bstat(s){const m={auto_approved:'bs',paid:'bs',otp_required:'bw',manual_review:'bw',quarantined:'be',pending:'bgg'};return`<span class="badge ${m[s]||'bgg'}">${s.replace('_',' ')}</span>`;}
-async function loadHist(){if(!curPid)return;try{const d=await api('GET',`/api/claims/history/${curPid}`);document.getElementById('htbl').innerHTML=d.claims.length?d.claims.map(c=>`<tr><td>${c.trigger_type}</td><td style="font-weight:700;color:#1e3a8a">₹${(c.payout_amount||0).toLocaleString()}</td><td>${bstat(c.status)}</td><td>${(c.coherence_score*100).toFixed(0)}%</td><td>${c.zone}</td><td style="color:#64748b">${new Date(c.created_at).toLocaleDateString()}</td></tr>`).join(''):'<tr><td colspan="6" style="text-align:center;color:#94a3b8;padding:16px">No claims.</td></tr>';}catch(e){toast(e.message,'error');}}
-window.onload=getPartners;
-</script>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <div class="nav-logo" style="margin-bottom:14px;color:#fff">🛡️ VARSHA</div>
+        <p>Income protection for delivery partners. Instant payouts when disruptions strike. Zero paperwork. AI-powered.
+        </p>
+      </div>
+      <div>
+        <h4>Product</h4><a href="#" onclick="goSec('policy')">Policy</a><a href="#"
+          onclick="goSec('premium')">Premium</a><a href="#" onclick="goSec('claims')">Claims</a><a href="#"
+          onclick="goSec('register')">Register</a>
+      </div>
+      <div>
+        <h4>Support</h4><a href="#">FAQ</a><a href="#">Contact</a><a href="#">Status</a>
+      </div>
+      <div>
+        <h4>Legal</h4><a href="#">Terms</a><a href="#">Privacy</a><a href="#">Compliance</a>
+      </div>
+    </div>
+    <div class="footer-bar">© 2026 VARSHA. All rights reserved. Built for DEVTrails 2026.</div>
+  </footer>
+
+  <div id="toast"></div>
+
+  <script>
+    // API_BASE that works both locally and on GitHub Pages
+    const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+      ? 'http://localhost:8000/api'           // When running locally
+      : 'https://varsha-s1dh.onrender.com/api'; // Your live backend
+    let partners = [], selfieDone = false, pendingClaim = null, curPid = null;
+    async function api(m, p, b) { const o = { method: m, headers: { 'Content-Type': 'application/json' } }; if (b) o.body = JSON.stringify(b); const r = await fetch(API + p, o), d = await r.json(); if (!r.ok) throw new Error(d.detail || 'Failed'); return d; }
+    function toast(msg, t = 'info') { const e = document.getElementById('toast'); const c = { success: '#059669', error: '#ef4444', warn: '#f59e0b', info: '#1e3a8a' }; e.textContent = msg; e.style.borderLeft = `4px solid ${c[t] || c.info}`; e.style.display = 'block'; clearTimeout(e._t); e._t = setTimeout(() => e.style.display = 'none', 3200); }
+    // SECTIONS
+    function goSec(s) {
+      document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('on'));
+      const nt = document.getElementById('nt-' + s); if (nt) nt.classList.add('on');
+      const home = document.getElementById('sec-home');
+      const feat = document.querySelector('.sec-alt');
+      const trigs = document.getElementById('sec-triggers');
+      const pars = document.querySelectorAll('.sec-alt')[1];
+      const reg = document.getElementById('sec-register');
+      const dash = document.getElementById('dashwrap');
+      const ap = document.getElementById('apwrap');
+      if (s === 'home') { home.style.display = ''; feat.style.display = ''; trigs.style.display = ''; if (pars) pars.style.display = ''; reg.style.display = 'none'; dash.style.display = curPid ? '' : 'none'; ap.style.display = curPid ? '' : 'none'; }
+      else if (s === 'register') { home.style.display = 'none'; feat.style.display = 'none'; trigs.style.display = 'none'; if (pars) pars.style.display = 'none'; reg.style.display = ''; dash.style.display = 'none'; ap.style.display = 'none'; }
+      else { home.style.display = 'none'; feat.style.display = 'none'; trigs.style.display = 'none'; if (pars) pars.style.display = 'none'; reg.style.display = 'none'; dash.style.display = ''; ap.style.display = curPid ? '' : 'none'; goTab(s); if (s === 'claims') chkTrg(); }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function goTab(t) { document.querySelectorAll('.dtab').forEach(b => b.classList.remove('on')); document.querySelectorAll('.dpg').forEach(p => p.classList.remove('on')); document.getElementById('dt-' + t)?.classList.add('on'); document.getElementById('dp-' + t)?.classList.add('on'); }
+    // PARTNERS
+    async function getPartners() { try { partners = await api('GET', '/api/partners'); renderPars(); chkTrg(); } catch (e) { document.getElementById('plist').innerHTML = `<p style="color:#ef4444">${e.message} — backend on :8000?</p>`; } }
+    function renderPars() { const el = document.getElementById('plist'); if (!partners.length) { el.innerHTML = '<p style="color:#94a3b8">No partners.</p>'; return; } el.innerHTML = partners.map(p => `<div class="par"><div class="par-av">👤</div><h4>${p.name}</h4><div class="par-zone">${p.zones[0]}</div><div class="par-plat">${p.platforms.join(', ')}</div><button class="par-btn" onclick="useP('${p.id}')">Select →</button></div>`).join(''); }
+    function useP(id) { curPid = id; const p = partners.find(x => x.id === id); if (p) { document.getElementById('ap-name').textContent = p.name; document.getElementById('ap-info').textContent = `${p.id} | ${p.zones[0]} | ${p.platforms.join(', ')}`; } document.getElementById('apwrap').style.display = ''; document.getElementById('dashwrap').style.display = ''; goSec('policy'); loadPol(); loadPrem(); }
+    function clearP() { curPid = null; document.getElementById('apwrap').style.display = 'none'; document.getElementById('dashwrap').style.display = 'none'; goSec('home'); }
+    function goPolicy() { if (curPid) { loadPol(); loadPrem(); } }
+    // REGISTER
+    function gs(n) { [1, 2, 3, 4].forEach(i => document.getElementById('s' + i).style.display = i === n ? 'block' : 'none');[1, 2, 3].forEach(i => { const d = document.getElementById('sd' + i); d.className = 'sdot' + (i === n ? ' cur' : i < n ? ' ok' : ''); }); }
+    function sendOTP() { const mob = document.getElementById('r-mob').value.trim(), e = document.getElementById('e1'); e.style.display = 'none'; if (!/^\d{10}$/.test(mob)) { e.textContent = 'Enter valid 10-digit mobile.'; e.style.display = 'block'; return; } document.getElementById('om').textContent = mob; gs(2); toast('OTP sent — use 123456', 'success'); }
+    function vOTP() { const o = document.getElementById('r-otp').value.trim(), e = document.getElementById('e2'); e.style.display = 'none'; if (o !== '123456') { e.textContent = 'Invalid OTP. Use 123456.'; e.style.display = 'block'; return; } gs(3); }
+    async function subReg() { const name = document.getElementById('r-name').value.trim(), zone = document.getElementById('r-zone').value, upi = document.getElementById('r-upi').value.trim(), plats = [...document.querySelectorAll('.pcb:checked')].map(c => c.value), mob = document.getElementById('r-mob').value.trim(), e = document.getElementById('e3'); e.style.display = 'none'; if (!name || !zone || !upi || !plats.length) { e.textContent = 'Fill all fields.'; e.style.display = 'block'; return; } const btn = document.getElementById('sbt'); btn.disabled = true; btn.innerHTML = '<span class="spi"></span> Creating…'; try { const rd = await api('POST', '/api/register', { mobile: mob, name, zones: [zone], upi_id: upi, platforms: plats }); await api('POST', '/api/verify-otp', { mobile: mob, otp: '123456' }); curPid = rd.partner_id; document.getElementById('r-uid').textContent = rd.partner_id; gs(4); await getPartners(); toast('Account created! 🎉', 'success'); } catch (err) { e.textContent = err.message; e.style.display = 'block'; } btn.disabled = false; btn.textContent = 'Create Account'; }
+    function resetReg() { gs(1);['r-mob', 'r-otp', 'r-name', 'r-upi'].forEach(id => document.getElementById(id).value = ''); }
+    // POLICY
+    const TIERS = [[300, 2000], [250, 1500], [200, 1200], [150, 900], [100, 600], [50, 300], [0, 0]];
+    function payout(b) { for (const [t, p] of TIERS) if (b >= t && p > 0) return p; return 0; }
+    function renderTiers(bal) { document.getElementById('tiers').innerHTML = TIERS.map(([t, p]) => { const a = p > 0 && bal >= t && bal < (TIERS[TIERS.indexOf(TIERS.find(x => x[0] === t)) - 1]?.[0] || 9999); return `<div class="tier${a ? ' active' : ''}"><span>₹${t}+ balance</span><span style="font-weight:700">₹${p.toLocaleString()}</span></div>`; }).join(''); }
+    async function loadPol() { if (!curPid) return; try { const d = await api('GET', `/api/policy/${curPid}`); document.getElementById('pb').textContent = '₹' + d.shield_balance; document.getElementById('pt2').textContent = d.shield_target; document.getElementById('pw').textContent = '₹' + d.weekly_deductions_this_week; document.getElementById('pp').textContent = '₹' + payout(d.shield_balance).toLocaleString(); document.getElementById('pst').textContent = d.status; document.getElementById('pbar').style.width = d.percentage + '%'; document.getElementById('ppl').textContent = d.percentage + '%'; document.getElementById('ppr').textContent = `₹${d.shield_balance}/₹${d.shield_target}`; const wp = Math.min(100, Math.round(d.weekly_deductions_this_week / 75 * 100)); document.getElementById('wbar').style.width = wp + '%'; document.getElementById('pwl').textContent = `₹${d.weekly_deductions_this_week}/₹75`; renderTiers(d.shield_balance); const tb = document.getElementById('txns'); tb.innerHTML = d.last_5_deductions.length ? d.last_5_deductions.map(t => `<tr><td>₹${t.amount}</td><td>${t.zone_factor}x</td><td>${t.efficiency_factor}x</td><td>${t.predictive_factor}x</td><td style="color:#64748b">${new Date(t.timestamp).toLocaleTimeString()}</td></tr>`).join('') : '<tr><td colspan="5" style="text-align:center;color:#94a3b8;padding:16px">No deductions yet.</td></tr>'; } catch (e) { toast(e.message, 'error'); } }
+    async function simDel() { if (!curPid) { toast('Select partner first', 'error'); return; } const btn = document.getElementById('simbtn'); btn.disabled = true; btn.innerHTML = '<span class="spi"></span> Simulating…'; try { const r = await api('POST', '/api/policy/simulate-delivery', { partner_id: curPid, platform: 'swiggy', deliveries_today: parseInt(document.getElementById('sd').value) || 20, total_kilometers: parseFloat(document.getElementById('sk').value) || 65 }); const el = document.getElementById('simres'); el.style.display = 'block'; el.innerHTML = `<div class="al al-s"><b>Done!</b> ${r.deliveries_processed} orders · Deduction: <b>₹${r.total_deduction}</b> · Balance: <b>₹${r.new_shield_balance}</b>${r.capped ? '<br/>⚠️ Weekly cap reached.' : ''}</div>`; await loadPol(); toast(`₹${r.total_deduction} added`, 'success'); } catch (e) { toast(e.message, 'error'); } btn.disabled = false; btn.textContent = '▶ Simulate & Collect'; }
+    // PREMIUM
+    async function loadPrem() { if (!curPid) return; try { const d = await api('GET', `/api/ml/premium/${curPid}`); document.getElementById('pamt').textContent = d.premium_per_order.toFixed(2); document.getElementById('pcf').textContent = d.combined_factor.toFixed(3); document.getElementById('pzone').textContent = d.zone_factor + 'x'; document.getElementById('peff').textContent = d.efficiency_factor + 'x'; document.getElementById('ppred').textContent = d.predictive_factor + 'x'; document.getElementById('pzs').textContent = `${d.zone.toUpperCase()} / ${d.season}`; const f = d.tomorrow_forecast; document.getElementById('fct').textContent = `${f.icon} Forecast`; document.getElementById('fce').textContent = `${f.weather_event} — risk ${f.risk_factor}x`; document.getElementById('fcr').textContent = '💡 ' + f.recommendation; const zr = await api('GET', `/api/ml/zone-risk/${d.zone}`); const rb = zr.risk_breakdown; document.getElementById('haz').innerHTML = `<table><thead><tr><th>Hazard</th><th>Factor</th><th>Level</th></tr></thead><tbody>` + Object.entries(rb).filter(([k]) => k !== 'base').map(([h, v]) => `<tr><td>${h.charAt(0).toUpperCase() + h.slice(1)}</td><td style="font-weight:700">${v}x</td><td>${v > 1.3 ? '<span class="badge be">High</span>' : v > 1 ? '<span class="badge bw">Medium</span>' : '<span class="badge bs">Low</span>'}</td></tr>`).join('') + '</tbody></table>'; } catch (e) { toast(e.message, 'error'); } }
+    // CLAIMS
+    async function chkTrg() { const zone = document.getElementById('tz').value; try { const d = await api('GET', `/api/triggers/check/${zone}`); const td = d.trigger_details; const items = [{ k: 'rain', n: '🌧️ Rain', v: `${td.rain.rainfall_mm}mm` }, { k: 'heat', n: '🔥 Heat', v: `${td.heat.temperature_c}°C` }, { k: 'flood', n: '🌊 Flood', v: td.flood.water_level || '—' }, { k: 'aqi', n: '🌫️ AQI', v: `${td.aqi.aqi}` }, { k: 'curfew', n: '🚫 Curfew', v: td.curfew.triggered ? 'Active' : 'None' }]; document.getElementById('tgg').innerHTML = items.map(i => `<div class="trg${td[i.k].triggered ? ' hot' : ''}"><div class="trg-top"><div class="trg-dot${td[i.k].triggered ? ' on' : ''}"></div><div class="trg-name">${i.n}</div></div><div class="trg-val">${i.v}</div>${td[i.k].triggered ? '<div class="trg-badge active">ACTIVE</div>' : '<div class="trg-badge ok">NORMAL</div>'}</div>`).join(''); if (d.any_triggered) toast(`⚡ Trigger active in ${zone}!`, 'warn'); } catch (e) { document.getElementById('tgg').innerHTML = `<p style="color:#ef4444">${e.message}</p>`; } }
+    async function sTrg(type) { const zone = document.getElementById('tz').value; try { await api('POST', `/api/triggers/simulate?zone=${zone}&trigger_type=${type}&active=true`); toast(`${type.toUpperCase()} activated`, 'warn'); await chkTrg(); } catch (e) { toast(e.message, 'error'); } }
+    async function autoClaim() { if (!curPid) { toast('Select partner first', 'error'); return; } const btn = document.getElementById('cbtn'); btn.disabled = true; btn.innerHTML = '<span class="spi"></span> Checking…'; pendingClaim = null; document.getElementById('osp').style.display = 'none'; try { const d = await api('POST', `/api/claims/auto/${curPid}`); const el = document.getElementById('cres'); el.style.display = 'block'; if (!d.triggered) { el.innerHTML = `<div class="al al-i">😴 ${d.message}</div>`; } else if (d.status === 'auto_approved') { el.innerHTML = `<div class="al al-s">🎉 <b>AUTO-APPROVED!</b> ₹${d.payout_amount.toLocaleString()} credited. Score: ${(d.coherence_score * 100).toFixed(0)}%</div>`; toast('₹' + d.payout_amount.toLocaleString() + ' approved!', 'success'); } else if (d.status === 'otp_required') { pendingClaim = d.claim_id; el.innerHTML = `<div class="al al-w">🔐 Verification needed · ₹${d.payout_amount.toLocaleString()} · Score: ${(d.coherence_score * 100).toFixed(0)}%</div>`; document.getElementById('osp').style.display = 'block'; } else if (d.status === 'manual_review') { el.innerHTML = `<div class="al al-w">🔍 Manual review · ₹${d.payout_amount.toLocaleString()}</div>`; } else { el.innerHTML = `<div class="al al-e">🚨 ${d.message}</div>`; } loadHist(); } catch (e) { document.getElementById('cres').style.display = 'block'; document.getElementById('cres').innerHTML = `<div class="al al-e">❌ ${e.message}</div>`; } btn.disabled = false; btn.textContent = '🔍 Check My Eligibility'; }
+    function takeSelfie() { selfieDone = true; document.getElementById('sfb').classList.add('ok'); document.getElementById('sfl').textContent = '✅ Captured'; }
+    async function vClaim() { if (!pendingClaim) { toast('No pending claim', 'error'); return; } if (!selfieDone) { toast('Capture selfie first', 'error'); return; } const otp = document.getElementById('cotp').value.trim(); try { const r = await api('POST', `/api/claims/verify-otp-selfie?claim_id=${pendingClaim}&otp=${otp}&selfie_base64=MOCK`); document.getElementById('osp').style.display = 'none'; document.getElementById('cres').innerHTML = `<div class="al al-s">✅ Verified! ₹${r.payout_amount.toLocaleString()} credited!</div>`; toast('Payout processed!', 'success'); loadHist(); } catch (e) { toast(e.message, 'error'); } }
+    function bstat(s) { const m = { auto_approved: 'bs', paid: 'bs', otp_required: 'bw', manual_review: 'bw', quarantined: 'be', pending: 'bgg' }; return `<span class="badge ${m[s] || 'bgg'}">${s.replace('_', ' ')}</span>`; }
+    async function loadHist() { if (!curPid) return; try { const d = await api('GET', `/api/claims/history/${curPid}`); document.getElementById('htbl').innerHTML = d.claims.length ? d.claims.map(c => `<tr><td>${c.trigger_type}</td><td style="font-weight:700;color:#1e3a8a">₹${(c.payout_amount || 0).toLocaleString()}</td><td>${bstat(c.status)}</td><td>${(c.coherence_score * 100).toFixed(0)}%</td><td>${c.zone}</td><td style="color:#64748b">${new Date(c.created_at).toLocaleDateString()}</td></tr>`).join('') : '<tr><td colspan="6" style="text-align:center;color:#94a3b8;padding:16px">No claims.</td></tr>'; } catch (e) { toast(e.message, 'error'); } }
+    window.onload = getPartners;
+  </script>
 </body>
+
 </html>
