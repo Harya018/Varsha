@@ -1,14 +1,11 @@
 ﻿{
-  "builds": [
-    {
-      "src": "frontend/**",
-      "use": "@vercel/static"
+  "buildCommand": "",
+  "outputDirectory": "frontend",
+  "installCommand": "",
+  "framework": null,
+  "functions": {
+    "frontend/**": {
+      "runtime": "@vercel/static"
     }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/frontend/"
-    }
-  ]
+  }
 }

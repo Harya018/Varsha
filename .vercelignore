@@ -1,0 +1,6 @@
+﻿# Ignore all Python files
+*.py
+*.pyc
+__pycache__/
+requirements.txt
+backend/
