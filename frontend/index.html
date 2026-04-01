@@ -1637,9 +1637,8 @@
 
   <script>
     // API_BASE that works both locally and on GitHub Pages
-    const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-      ? 'http://localhost:8000/api'           // When running locally
-      : 'https://varsha-s1dh.onrender.com/api'; // Your live backend
+        // API_BASE pointing to live backend
+    const API_BASE = 'https://varsha-s1dh.onrender.com/api';
     let partners = [], selfieDone = false, pendingClaim = null, curPid = null;
     async function api(m, p, b) { const o = { method: m, headers: { 'Content-Type': 'application/json' } }; if (b) o.body = JSON.stringify(b); const r = await fetch(API + p, o), d = await r.json(); if (!r.ok) throw new Error(d.detail || 'Failed'); return d; }
     function toast(msg, t = 'info') { const e = document.getElementById('toast'); const c = { success: '#059669', error: '#ef4444', warn: '#f59e0b', info: '#1e3a8a' }; e.textContent = msg; e.style.borderLeft = `4px solid ${c[t] || c.info}`; e.style.display = 'block'; clearTimeout(e._t); e._t = setTimeout(() => e.style.display = 'none', 3200); }
